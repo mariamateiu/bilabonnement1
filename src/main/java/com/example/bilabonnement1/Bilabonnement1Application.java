@@ -10,4 +10,6 @@ public class Bilabonnement1Application {
         SpringApplication.run(Bilabonnement1Application.class, args);
     }
 
+    /*test*/
+
 }
