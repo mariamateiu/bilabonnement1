@@ -1,4 +1,4 @@
-package Model;
+package Utility;
 
 public class SearchResult {
     public static void GDPRData(){
