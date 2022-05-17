@@ -2,25 +2,21 @@ package Model;
 
 public class Lease {
     private int leaseID;
-    private int clientID;
+    private int customerID;
     private int carID;
     private int VIN; //vehicle identification number
     private int price;
     private boolean limitedLease;
-    private boolean unlimitedLease;
-    private int limitedLeaseTime;
-    private int unlimitedLeaseTime;
+    private int monthLeased;
 
-    public Lease(int leaseID, int clientID, int carID, int VIN, int price, boolean limitedLease, boolean unlimitedLease, int limitedLeaseTime, int unlimitedLeaseTime) {
+    public Lease(int leaseID, int customerID, int carID, int VIN, int price, boolean limitedLease, int monthLeased) {
         this.leaseID = leaseID;
-        this.clientID = clientID;
+        this.customerID = customerID;
         this.carID = carID;
         this.VIN = VIN;
         this.price = price;
         this.limitedLease = limitedLease;
-        this.unlimitedLease = unlimitedLease;
-        this.limitedLeaseTime = limitedLeaseTime;
-        this.unlimitedLeaseTime = unlimitedLeaseTime;
+        this.monthLeased = monthLeased;
     }
 
     public int getLeaseID() {
@@ -31,12 +27,12 @@ public class Lease {
         this.leaseID = leaseID;
     }
 
-    public int getClientID() {
-        return clientID;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setClientID(int clientID) {
-        this.clientID = clientID;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
     public int getCarID() {
@@ -71,42 +67,24 @@ public class Lease {
         this.limitedLease = limitedLease;
     }
 
-    public boolean isUnlimitedLease() {
-        return unlimitedLease;
+    public int getMonthLeased() {
+        return monthLeased;
     }
 
-    public void setUnlimitedLease(boolean unlimitedLease) {
-        this.unlimitedLease = unlimitedLease;
-    }
-
-    public int getLimitedLeaseTime() {
-        return limitedLeaseTime;
-    }
-
-    public void setLimitedLeaseTime(int limitedLeaseTime) {
-        this.limitedLeaseTime = limitedLeaseTime;
-    }
-
-    public int getUnlimitedLeaseTime() {
-        return unlimitedLeaseTime;
-    }
-
-    public void setUnlimitedLeaseTime(int unlimitedLeaseTime) {
-        this.unlimitedLeaseTime = unlimitedLeaseTime;
+    public void setMonthLeased(int monthLeased) {
+        this.monthLeased = monthLeased;
     }
 
     @Override
     public String toString() {
         return "Lease{" +
                 "leaseID=" + leaseID +
-                ", clientID=" + clientID +
+                ", clientID=" + customerID +
                 ", carID=" + carID +
                 ", VIN=" + VIN +
                 ", price=" + price +
                 ", limitedLease=" + limitedLease +
-                ", unlimitedLease=" + unlimitedLease +
-                ", limitedLeaseTime=" + limitedLeaseTime +
-                ", unlimitedLeaseTime=" + unlimitedLeaseTime +
+                ", unlimitedLeaseTime=" + monthLeased +
                 '}';
     }
 }
