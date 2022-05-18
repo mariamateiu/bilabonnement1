@@ -1,23 +1,22 @@
-package Repository;
+package com.example.bilabonnement1.repository;
 
-import Model.Employee;
-import Utility.ConnectionManager;
+import com.example.bilabonnement1.model.Employee;
+import com.example.bilabonnement1.utility.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DamageEmployeeRepository {
-
+public class BusinessEmployeeRepository {
     ConnectionManager cm = new ConnectionManager();
 
-    public void createDME(Employee DamEm) throws SQLException {
+    public void createBE(Employee BE) throws SQLException {
         Connection connection = cm.connectionToDB();
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "INSERT INTO semestereksamen.employee(employeeID, password, type) VALUES (?,?,?)");
-        preparedStatement.setInt(1, DamEm.getEmployeeID());
-        preparedStatement.setString(2, DamEm.getPassword());
-        preparedStatement.setString(3,"Damage");
+        preparedStatement.setInt(1, BE.getEmployeeID());
+        preparedStatement.setString(2, BE.getPassword());
+        preparedStatement.setString(3,"Business");
         preparedStatement.executeUpdate();
     }
 }

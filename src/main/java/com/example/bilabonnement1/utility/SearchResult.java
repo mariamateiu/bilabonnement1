@@ -1,4 +1,4 @@
-package Utility;
+package com.example.bilabonnement1.utility;
 
 public class SearchResult {
     public static void GDPRData(){
