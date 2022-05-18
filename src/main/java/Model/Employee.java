@@ -1,26 +1,19 @@
 package Model;
 
 public class Employee {
-    private String username;
-    private String password;
     private int employeeID;
+    private String password;
+    private String type;
 
 
-    public Employee(String username, String password, int employeeID) {
-        this.username = username;
+
+
+    public Employee(String username, String password, int employeeID, String type) {
         this.password = password;
         this.employeeID = employeeID;
+        this.type = type;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-
-    public void setUsername(String username) {
-        this.username = username;
-
-    }
 
     public String getPassword() {
         return password;
@@ -38,12 +31,20 @@ public class Employee {
         this.employeeID = employeeID;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
-                "username='" + username + '\'' +
+                "employeeID=" + employeeID +
                 ", password='" + password + '\'' +
-                ", employeeID=" + employeeID +
+                ", type='" + type + '\'' +
                 '}';
     }
 }
