@@ -2,16 +2,16 @@ package Model;
 
 public class Lease {
     private int leaseID;
-    private int customerID;
+    private int clientID;
     private int carID;
     private int VIN; //vehicle identification number
     private int price;
     private boolean limitedLease;
     private int monthLeased;
 
-    public Lease(int leaseID, int customerID, int carID, int VIN, int price, boolean limitedLease, int monthLeased) {
+    public Lease(int leaseID, int clientID, int carID, int VIN, int price, boolean limitedLease, int monthLeased) {
         this.leaseID = leaseID;
-        this.customerID = customerID;
+        this.clientID = clientID;
         this.carID = carID;
         this.VIN = VIN;
         this.price = price;
@@ -27,12 +27,12 @@ public class Lease {
         this.leaseID = leaseID;
     }
 
-    public int getCustomerID() {
-        return customerID;
+    public int getClientID() {
+        return clientID;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+    public void setClientID(int clientID) {
+        this.clientID = clientID;
     }
 
     public int getCarID() {
@@ -79,7 +79,7 @@ public class Lease {
     public String toString() {
         return "Lease{" +
                 "leaseID=" + leaseID +
-                ", clientID=" + customerID +
+                ", clientID=" + clientID +
                 ", carID=" + carID +
                 ", VIN=" + VIN +
                 ", price=" + price +
