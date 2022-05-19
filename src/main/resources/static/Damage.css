@@ -1,5 +1,110 @@
-.square{
-    background-color: pink;
-    height: 1300px;
-    width: 200px;
+.background-square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    width: 150vh;
+    border-radius: 20px;
+    margin-top: 5vh;
+    background-color: #E5E5E5;
+}
+
+
+.Background {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    height: 90vh;
+    width: 150vh;
+    border-radius: 20px;
+    margin-top: 5vh;
+
+    background-color: #E5E5E5;
+}
+
+.Container {
+
+    height: 50vh;
+    width: 200vh;
+
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.Menu-box {
+
+
+    justify-content: space-evenly;
+    height: 65vh;
+    width: 70vh;
+    border-radius: 20px;
+}
+
+.Button-carid {
+    float: left;
+    height: 8vh;
+    width: 240px;
+    margin-bottom: 5vh;
+    border-radius: 20px;
+    border-color: #F2F2F2;
+    background-color: #F2F2F2;
+
+}
+
+.Button-part {
+    float: left;
+    height: 8vh;
+    width: 240px;
+    margin-bottom: 5vh;
+    border-radius: 20px;
+    border-color: #F2F2F2;
+    background-color: #F2F2F2;
+
+}
+.Button-damage {
+    float: left;
+    height: 32vh;
+    width: 240px;
+    margin-bottom: 5vh;
+    border-radius: 20px;
+    border-color: #F2F2F2;
+    background-color: #F2F2F2;
+
+}
+
+.Button-price {
+    float: right;
+    height: 7vh;
+    width: 240px;
+    margin-bottom: 5vh;
+    border-radius: 20px;
+    background-color: #F2F2F2;
+}
+
+.Button-done{
+    float: right;
+    height: 6vh;
+    width: 120px;
+    margin-bottom: 5vh;
+    border-radius: 20px;
+    border-color: #F2F2F2;
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
