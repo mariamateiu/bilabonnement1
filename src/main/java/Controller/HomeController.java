@@ -1,28 +1,21 @@
 package Controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@Controller
 public class HomeController {
 
-    private static Connection connection;
-    public static Connection connectionToDB () {
 
+    @GetMapping("/" )
+    public String Menu(){
+        //ConnectionManager.();
 
-        String url = "jdbc:mysql://localhost:3306/semestereksamen";
-        String user = "root";
-        String password = "N123naomi";
+        return "Menu";
 
-        try {
-            connection = DriverManager.getConnection(url, user, password);
-            System.out.println("we have a connection");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("somethings wrong with the connection");
-        }
-        return connection;
-
-    }
-}
+}}
