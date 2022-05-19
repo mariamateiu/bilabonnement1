@@ -1,7 +1,7 @@
-package Repository;
+package com.example.bilabonnement1.repository;
 
-import Model.Employee;
-import Utility.ConnectionManager;
+import com.example.bilabonnement1.model.Employee;
+import com.example.bilabonnement1.utility.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

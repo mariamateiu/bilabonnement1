@@ -1,4 +1,4 @@
-package Model;
+package com.example.bilabonnement1.model;
 
 public class Employee {
     private int employeeID;
