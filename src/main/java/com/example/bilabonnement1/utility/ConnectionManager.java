@@ -6,11 +6,12 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
     private static Connection connection;
+    public static Connection connectionToDB () {
 
-    public Connection connectionToDB(){
+
         String url = "jdbc:mysql://localhost:3306/semestereksamen";
         String user = "root";
-        String password = "ngv38Bdt";
+        String password = "N123naomi";
 
         try {
             connection = DriverManager.getConnection(url, user, password);

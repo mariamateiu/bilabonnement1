@@ -24,7 +24,16 @@
     margin-top: 5vh;
 
     background-color: #E5E5E5;
+
 }
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .Container{
 
     height:50vh;
@@ -39,12 +48,6 @@
 
 }
 
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
 
 .Menu-box{
 
@@ -54,6 +57,7 @@ body{
     justify-content: space-evenly;
     align-items: center;
     margin-right: 3em;
+
 
 
 

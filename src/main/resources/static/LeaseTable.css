@@ -1,0 +1,71 @@
+.Headline{
+    color: black;
+
+    display: flex;
+
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.Table{
+
+
+}
+
+.Table-Scrollbar{
+
+     height: 700px;
+    overflow-y: scroll;
+}
+
+.Background{
+
+    display: flex;
+
+    justify-content: center;
+
+
+
+    width: 150vh;
+    border-radius: 20px;
+    margin-top: 5vh;
+
+    background-color: #E5E5E5;
+}
+
+.Body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.Table-lease-Box {
+     width: 50vh;
+    border: 0.5vh solid black;
+    align-items: center;
+    margin-bottom: 2em;
+
+
+
+}
+
+
+
+th{
+    width: 50vh;
+    border: 0.5vh solid black;
+    padding: 2vh;
+    background-color: grey;
+
+}
+
+td{
+    width: 50vh;
+    border: 0.5vh solid black;
+    padding: 2vh;
+    background-color: #F2F2F2;
+}
+
+
+

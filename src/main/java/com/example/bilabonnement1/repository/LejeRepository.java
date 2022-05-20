@@ -12,6 +12,8 @@ public class LejeRepository {
 
     ConnectionManager cm = new ConnectionManager();
 
+
+
     public void createLeje(Lease lease) throws SQLException {
 
         Connection connection = cm.connectionToDB();
