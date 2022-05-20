@@ -9,14 +9,11 @@ public class Lease {
     private boolean limitedLease;
     private int monthLeased;
 
-    public Lease(int leaseID, int clientID, int carID, int VIN, int price, boolean limitedLease, int monthLeased) {
-        this.leaseID = leaseID;
+    public Lease( int clientID, int carID, int VIN, int price) {
         this.clientID = clientID;
         this.carID = carID;
         this.VIN = VIN;
         this.price = price;
-        this.limitedLease = limitedLease;
-        this.monthLeased = monthLeased;
     }
 
     public int getLeaseID() {
