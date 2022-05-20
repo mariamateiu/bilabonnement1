@@ -1,0 +1,125 @@
+
+.Background{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    height:90vh;
+    width: 150vh;
+    border-radius: 20px;
+    margin-top: 5vh;
+
+    background-color: #E5E5E5;
+}
+.Container{
+
+    height:50vh;
+    width: 200vh;
+
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+
+}
+
+body{
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+
+}
+
+label, input{
+    display: flex;
+    flex-direction: column;
+}
+label{
+    font-size: 20px;
+}
+input {
+    justify-content: center;
+    font-size: 25px;
+    width: 250px;
+    padding: 10px;
+}
+.lease-ID{
+    float: top;
+    height: 2vh;
+    width: 240px;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    border-radius: 20px;
+    border-color: #F2F2F2;
+    background-color: #F2F2F2;
+
+}
+
+.Client-ID{
+    float: top;
+    height: 2vh;
+    width: 240px;
+    margin-top: 0.5vh;
+    margin-bottom: 2vh;
+    border-radius: 20px;
+    border-color: #F2F2F2;
+    background-color: #F2F2F2;
+}
+
+.Car-ID{
+    float: top;
+    height: 2vh;
+    width: 240px;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    border-radius: 20px;
+    border-color: #F2F2F2;
+    background-color: #F2F2F2;}
+
+.VIN{
+    float: top;
+    height: 2vh;
+    width: 240px;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    border-radius: 20px;
+    border-color: #F2F2F2;
+    background-color: #F2F2F2;}
+
+.Price{float: top;
+    height: 2vh;
+    width: 240px;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    border-radius: 20px;
+    border-color: #F2F2F2;
+    background-color: #F2F2F2;}
+
+.drop-down{
+    float: top;
+    height: 3vh;
+    width: 260px;
+    font-size: 20px;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    padding-left: 95px;
+    border-radius: 20px;
+    border-color: #F2F2F2;
+    background-color: #F2F2F2;
+}
+
+.submit-button{
+    font-size: 20px;
+    float: top;
+    width: 100px;
+    height: 3vh;
+    left: 942px;
+    top: 691px;
+
+    background: #E5E5E5;
+    border-radius: 25px;
+}

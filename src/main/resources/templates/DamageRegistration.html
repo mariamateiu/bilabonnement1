@@ -8,14 +8,26 @@
 
 
 </head>
-<body>
+<body class="Body">
 
-<div>
-    <div class="square">
-        Hej
+
+<div class="Background ">
+
+    <div class="Container">
+        <h1>registrer skade</h1>
+        <div class="Menu-box">
+            <form action="/RegistrerSkade" method="post">
+        <input type="text" placeholder="carID" name="carID" required class="Button-carid">
+        <input type="text" placeholder="car part" name="carPart" required class="Button-part">
+        <input type="text" placeholder="car damage" name="carDamage" required class="Button-damage">
+        <input type="text" placeholder="price" name="price" required class="Button-price">
+                <button class="Button-done" type="submit"> done </button>
+        </form>
     </div>
 
 </div>
 
+
+</body>
 </body>
 </html>

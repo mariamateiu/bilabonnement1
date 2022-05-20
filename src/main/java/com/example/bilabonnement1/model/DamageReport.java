@@ -6,13 +6,17 @@ public class DamageReport {
     private String carPart;
     private String damageDescription;
     private String damagePrice;
+    private int customerID;
 
-    public DamageReport(int damageReportID, int carID, String carPart, String damageDescription, String damagePrice) {
-        this.damageReportID = damageReportID;
-        this.carID = carID;
-        this.carPart = carPart;
-        this.damageDescription = damageDescription;
-        this.damagePrice = damagePrice;
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
+
+    public DamageReport(){
     }
 
     public int getDamageReportID() {

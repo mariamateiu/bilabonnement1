@@ -32,14 +32,13 @@ public class DamageRepository {
         Connection connection = cm.connectionToDB();
 
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO semestereksamen.damageregistration(damageReportID, carID, carPart, damageDescription, damagePrice) VALUES (?,?,?,?,?)");
+                "INSERT INTO semestereksamen.damagereport(damageReportID, carID, car_part, damage_description, damage_price) VALUES (?,?,?,?,?)");
 
         preparedStatement.setInt(1,damageReport.getDamageReportID());
         preparedStatement.setInt(2,damageReport.getCarID());
         preparedStatement.setString(3,damageReport.getCarPart());
         preparedStatement.setString(4,damageReport.getDamageDescription());
         preparedStatement.setString(5,damageReport.getDamagePrice());
-
 
         preparedStatement.executeUpdate();
 
