@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lease Side</title>
+    <link rel="stylesheet" href="../static/LeaseRegistration.css">
+    <link th:href="@{LeaseRegistration.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="Background" >
+
+    <div class="Container">
+
+        <h1>Lease registrering</h1>
+        <div class="lease-box">
+            <form action="/RegistrerLease" method="post">
+                <label for="LeaseID">LeaseID</label>
+                <input type="text" inputmode="numeric" maxlength="5" id="LeaseID" name="Lease ID" required class="lease-ID">
+                <label for="ClientID">ClientID</label>
+                <input type="text" inputmode="numeric" maxlength="5" id="ClientID" name="Client ID" required class="Client-ID">
+                <label for="CarID">Car ID</label>
+                <input type="text" inputmode="numeric" maxlength="5" id="CarID" name="Car ID" required class="Car-ID">
+                <label for="VIN">VIN</label>
+                <input type="text" maxlength="17" id="VIN" name="VIN" required class="VIN">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="Price" required class="Price">
+                <label for="drop">Type of lease</label>
+                <select name="type of lease" id="drop" placeholder="type of lease" size="1" required class="drop-down">
+                    <option value="limited">limited</option>
+                    <option value="unlimited">unlimited</option>
+                </select>
+                <input type="submit" placeholder="Submit" value="Submit" required class="submit-button" />
+
+
+            </form>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
