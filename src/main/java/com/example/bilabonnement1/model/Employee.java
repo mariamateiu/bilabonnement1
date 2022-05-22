@@ -6,6 +6,15 @@ public class Employee {
     private String type;
     private String fullName;
 
+    public Employee(String fullName, String password, String type) {
+        this.fullName = fullName;
+        this.password = password;
+        this.type = type;
+    }
+    public Employee(){
+
+    }
+
     public String getFullName() {
         return fullName;
     }
@@ -14,9 +23,7 @@ public class Employee {
         this.fullName = fullName;
     }
 
-    public Employee() {
 
-    }
 
 
     public String getPassword() {

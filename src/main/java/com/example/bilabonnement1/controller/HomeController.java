@@ -4,6 +4,7 @@ import com.example.bilabonnement1.model.DamageReport;
 import com.example.bilabonnement1.model.Employee;
 import com.example.bilabonnement1.model.Lease;
 import com.example.bilabonnement1.repository.*;
+import com.example.bilabonnement1.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,8 @@ import java.sql.SQLException;
 @Controller
 public class HomeController {
     DamageRepository dm = new DamageRepository();
+    EmployeeRepository er = new EmployeeRepository();
+    EmployeeService es = new EmployeeService();
 
 
     @GetMapping("/hej")
@@ -62,32 +65,49 @@ public class HomeController {
     }
 
     @GetMapping("/OpretMedarbejder")
-    public String opretMedarbejer(){
+    public String opretMedarbejer() {
         return "OpretBruger";
     }
 
     @PostMapping("/OpretMedarbejder")
     public String opret(@RequestParam("fullname") String fullName,
                         @RequestParam("password") String password,
-                        @RequestParam("type") String type) throws SQLException {
-        Employee em = new Employee();
-        em.setFullName(fullName);
-        em.setPassword(password);
-        if (type.equalsIgnoreCase("forretning")){
-            BusinessEmployeeRepository be = new BusinessEmployeeRepository();
-            be.createBE(em);
-        } if(type.equalsIgnoreCase("data")){
-            DataEmployeeRepository de = new DataEmployeeRepository();
-            de.createDTE(em);
-        } if(type.equalsIgnoreCase("skade")){
-            DamageEmployeeRepository dm = new DamageEmployeeRepository();
-            dm.createDME(em);
-        }else{
-            return "fejl";
-        }
-        return "redirect:/";
+                        @RequestParam("type") String type) {
+
+        er.createUser(new Employee(fullName, password, type));
+
+        return "redirect:/Login";
 
     }
 
+    @GetMapping("/Login")
+    public String login() {
+        return "Login";
+    }
 
+    @PostMapping("/Login")
+    public String loginTjek(@RequestParam("navn") String name,
+                            @RequestParam("password") String password) throws SQLException {
+
+
+        Employee employee = er.findUser(name);
+        if (es.loginSucces(employee, password)) {
+            if (employee.getType().equalsIgnoreCase("forretning")) {
+                return "MenuBusiness";
+            }
+            if (employee.getType().equalsIgnoreCase("data")) {
+                return "MenuData";
+            }
+            if (employee.getType().equalsIgnoreCase("skade")) {
+                return "MenuDamage";
+            } else {
+                {
+                    return "Brugeren findes ikke";
+                }
+
+            }
+        }
+        return "";
+    }
 }
+
