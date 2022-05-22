@@ -13,10 +13,11 @@ public class BusinessEmployeeRepository {
     public void createBE(Employee BE) throws SQLException {
         Connection connection = cm.connectionToDB();
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO semestereksamen.employee(employeeID, password, type) VALUES (?,?,?)");
+                "INSERT INTO semestereksamen.employee(employeeID, password, type, full_name) VALUES (?,?,?,?)");
         preparedStatement.setInt(1, BE.getEmployeeID());
         preparedStatement.setString(2, BE.getPassword());
         preparedStatement.setString(3,"Business");
+        preparedStatement.setString(4,BE.getFullName());
         preparedStatement.executeUpdate();
     }
 }

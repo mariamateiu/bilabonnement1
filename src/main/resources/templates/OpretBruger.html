@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret Bruger</title>
+    <link th:href="@{Opret.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../static/Opret.css">
+
+</head>
+<body class="body">
+
+
+<div class="Menu-box">
+    <form action="/OpretMedarbejder" method="post">
+    <input type="text" placeholder="fulde navn" name="fullname" required class="input-felt">
+    <input type="text" placeholder="password" name="password" required class="input-felt">
+    <input type="text" placeholder="type af medarbejder" name="type" required class="input-felt" >
+    <button class="submit-button" type="submit"> Done </button>
+    </form>
+</div>
+
+
+</body>
+</html>

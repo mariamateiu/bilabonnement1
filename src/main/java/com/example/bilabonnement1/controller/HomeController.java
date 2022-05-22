@@ -1,9 +1,9 @@
 package com.example.bilabonnement1.controller;
 
 import com.example.bilabonnement1.model.DamageReport;
+import com.example.bilabonnement1.model.Employee;
 import com.example.bilabonnement1.model.Lease;
-import com.example.bilabonnement1.repository.DamageRepository;
-import com.example.bilabonnement1.repository.LejeRepository;
+import com.example.bilabonnement1.repository.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -59,6 +59,34 @@ public class HomeController {
         lr.createLeje(l);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/OpretMedarbejder")
+    public String opretMedarbejer(){
+        return "OpretBruger";
+    }
+
+    @PostMapping("/OpretMedarbejder")
+    public String opret(@RequestParam("fullname") String fullName,
+                        @RequestParam("password") String password,
+                        @RequestParam("type") String type) throws SQLException {
+        Employee em = new Employee();
+        em.setFullName(fullName);
+        em.setPassword(password);
+        if (type.equalsIgnoreCase("forretning")){
+            BusinessEmployeeRepository be = new BusinessEmployeeRepository();
+            be.createBE(em);
+        } if(type.equalsIgnoreCase("data")){
+            DataEmployeeRepository de = new DataEmployeeRepository();
+            de.createDTE(em);
+        } if(type.equalsIgnoreCase("skade")){
+            DamageEmployeeRepository dm = new DamageEmployeeRepository();
+            dm.createDME(em);
+        }else{
+            return "fejl";
+        }
+        return "redirect:/";
+
     }
 
 

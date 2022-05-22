@@ -14,10 +14,11 @@ public class DamageEmployeeRepository {
     public void createDME(Employee DamEm) throws SQLException {
         Connection connection = cm.connectionToDB();
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO semestereksamen.employee(employeeID, password, type) VALUES (?,?,?)");
+                "INSERT INTO semestereksamen.employee(employeeID, password, type, full_name) VALUES (?,?,?,?)");
         preparedStatement.setInt(1, DamEm.getEmployeeID());
         preparedStatement.setString(2, DamEm.getPassword());
         preparedStatement.setString(3,"Damage");
+        preparedStatement.setString(4,DamEm.getFullName());
         preparedStatement.executeUpdate();
     }
 }
