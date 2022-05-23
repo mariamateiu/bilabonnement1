@@ -11,12 +11,23 @@ import java.util.List;
 @Service
 public class LeaseService {
     @Autowired
-
     LejeRepository lejeRepository;
+
 
     public ArrayList<Lease> getAllLeases(){
 
+
         return lejeRepository.getAllLeases();
+    }
+
+    public int getTotalPrice(List<Lease> leaseList){
+
+        int totalPrice = 0;
+        for (int i = 0; i < leaseList.size(); i++) {
+            totalPrice+= leaseList.get(i).getPrice();
+
+        }
+        return totalPrice;
     }
 
 

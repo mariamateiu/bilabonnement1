@@ -24,10 +24,11 @@
 <thead>
          <tr>
              <th>  LeaseID  </th>
-             <th>   CarID   </th>
+             <th>  CarID   </th>
              <th>  ClientID </th>
              <th>  VIN </th>
              <th>  Price </th>
+
 
          </tr>
 
@@ -40,6 +41,11 @@
              <td th:text="${lease.carID}"></td>
              <td th:text="${lease.VIN}"></td>
              <td th:text="${lease.price}"></td>
+         </tr>
+
+         <tr>
+             <th>Total price</th>
+         <td th:text="${totalPrice}"></td>
          </tr>
 
          </tbody>

@@ -29,6 +29,7 @@ public class HomeController {
     LejeRepository lejeRepository;
     LeaseService leaseService;
 
+
     public HomeController(LejeRepository lejeRepository, LeaseService leaseService){
         this.lejeRepository = lejeRepository;
         this.leaseService = leaseService;
@@ -102,8 +103,6 @@ public class HomeController {
         er.createUser(em);
 
 
-
-
         return "/Login";
 
     }
@@ -127,31 +126,36 @@ public class HomeController {
             if (employee.getType().equalsIgnoreCase("skade")) {
                 return "MenuDamage";
             } else {
-                {
+
                     return "Brugeren findes ikke";
                 }
 
 
-    @GetMapping("/viewAllLeaseRegistration")
-
-        public String viewAllLeaseRegistration(Model model ){
-
-        ArrayList<Lease> leases = lejeRepository.getAllLeases();
+            }
+            return "";
+        }
 
 
-        model.addAttribute("leases", leases);
-       // model.addAttribute("testString", "Please virk for helvede");
+
+                @GetMapping("/viewAllLeaseRegistration")
+
+                public String viewAllLeaseRegistration (Model model ){
+
+                    ArrayList<Lease> leases = lejeRepository.getAllLeases();
 
 
-        return "/LeaseTable";
+                    model.addAttribute("leases", leases);
+                    model.addAttribute("totalPrice",leaseService.getTotalPrice(leases));
+                    // model.addAttribute("testString", "Please virk for helvede");
 
-    }
 
+                    return "/LeaseTable";
+
+                }
 
 
             }
-        }
-        return "";
-    }
-}
+
+
+
 

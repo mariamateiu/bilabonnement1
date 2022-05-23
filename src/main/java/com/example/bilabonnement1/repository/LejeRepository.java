@@ -55,6 +55,7 @@ public class LejeRepository {
 
                 leases.add(new Lease(leaseID,clientID,carID,VIN,price));
 
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
