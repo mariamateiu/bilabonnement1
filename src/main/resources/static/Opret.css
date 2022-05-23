@@ -1,0 +1,43 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15vh;
+}
+
+.Menu-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-right: 3em;
+    height:350px;
+    width: 300px;
+    border: 5px solid grey;
+    border-radius: 20px;
+    background-color: #E5E5E5;
+}
+
+.input-felt{
+
+    top: 250px;
+    height: 40px;
+    width: 248px;
+    border-radius: 25px;
+    border-color:#F2F2F2 ;
+    background-color: #F2F2F2;
+
+}
+
+.submit-button{
+    height: 6vh;
+    width: 120px;
+    border-radius: 20px;
+    border-color: #F2F2F2;
+    background-color: #F2F2F2;
+
+}
+
+.submit-button:hover{
+    opacity: 0.5;
+}

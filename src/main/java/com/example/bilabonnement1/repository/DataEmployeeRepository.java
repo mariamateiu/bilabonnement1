@@ -13,10 +13,12 @@ public class DataEmployeeRepository {
     public void createDTE(Employee datEm) throws SQLException {
         Connection connection = cm.connectionToDB();
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO semestereksamen.employee(employeeID, password) VALUES (?,?,?)");
+                "INSERT INTO semestereksamen.employee(employeeID, password, type, full_name) VALUES (?,?,?,?)");
         preparedStatement.setInt(1, datEm.getEmployeeID());
         preparedStatement.setString(2, datEm.getPassword());
         preparedStatement.setString(3, "Data");
+        preparedStatement.setString(4,datEm.getFullName());
+
         preparedStatement.executeUpdate();
     }
 }

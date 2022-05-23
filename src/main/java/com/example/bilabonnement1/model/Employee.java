@@ -4,15 +4,26 @@ public class Employee {
     private int employeeID;
     private String password;
     private String type;
+    private String fullName;
 
-
-
-
-    public Employee(String username, String password, int employeeID, String type) {
+    public Employee(String fullName, String password, String type) {
+        this.fullName = fullName;
         this.password = password;
-        this.employeeID = employeeID;
         this.type = type;
     }
+    public Employee(){
+
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+
 
 
     public String getPassword() {
