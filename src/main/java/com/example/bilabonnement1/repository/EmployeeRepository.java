@@ -13,11 +13,10 @@ public class EmployeeRepository {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO semestereksamen.employee(employeeID, full_name, password, type,) VALUES (?,?,?,?)");
-            preparedStatement.setInt(1, user.getEmployeeID());
-            preparedStatement.setString(2, user.getFullName());
-            preparedStatement.setString(3, user.getPassword());
-            preparedStatement.setString(4, user.getType());
+                    "INSERT INTO semestereksamen.employee(full_name, password, type) VALUES (?,?,?)");
+            preparedStatement.setString(1, user.getFullName());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getType());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Kunne ikke oprette" + e);

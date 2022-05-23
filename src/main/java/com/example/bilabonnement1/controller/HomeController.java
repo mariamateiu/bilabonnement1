@@ -74,9 +74,17 @@ public class HomeController {
                         @RequestParam("password") String password,
                         @RequestParam("type") String type) {
 
-        er.createUser(new Employee(fullName, password, type));
+        Employee em = new Employee();
+        em.setFullName(fullName);
+        em.setPassword(password);
+        em.setType(type);
 
-        return "redirect:/Login";
+        er.createUser(em);
+
+
+
+
+        return "/Login";
 
     }
 
@@ -88,8 +96,6 @@ public class HomeController {
     @PostMapping("/Login")
     public String loginTjek(@RequestParam("navn") String name,
                             @RequestParam("password") String password) throws SQLException {
-
-
         Employee employee = er.findUser(name);
         if (es.loginSucces(employee, password)) {
             if (employee.getType().equalsIgnoreCase("forretning")) {
