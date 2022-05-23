@@ -2,16 +2,22 @@ package com.example.bilabonnement1.repository;
 
 import com.example.bilabonnement1.model.Lease;
 import com.example.bilabonnement1.utility.ConnectionManager;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-
+ @Repository
 public class LejeRepository {
 
-    ConnectionManager cm = new ConnectionManager();
 
+    ConnectionManager cm = new ConnectionManager();
 
 
     public void createLeje(Lease lease) throws SQLException {
@@ -28,4 +34,36 @@ public class LejeRepository {
         preparedStatement.executeUpdate();
 
     }
+
+
+
+    public ArrayList<Lease> getAllLeases() {
+        Connection connection = cm.connectionToDB();
+
+        ArrayList<Lease> leases = new ArrayList<>();
+        String query  = "SELECT * FROM lease";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int leaseID = resultSet.getInt(1);
+                int clientID = resultSet.getInt(2);
+                int carID = resultSet.getInt(3);
+                int VIN = resultSet.getInt(4);
+                int price = resultSet.getInt(5);
+
+                leases.add(new Lease(leaseID,clientID,carID,VIN,price));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error");
+        }
+        return leases;
+    }
+
+
+
+
 }

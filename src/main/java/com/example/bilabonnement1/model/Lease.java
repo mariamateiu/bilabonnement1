@@ -16,6 +16,20 @@ public class Lease {
         this.price = price;
     }
 
+    public Lease(int leaseID, int clientID, int carID, int VIN, int price) {
+        this.leaseID = leaseID;
+        this.clientID = clientID;
+        this.carID = carID;
+        this.VIN = VIN;
+        this.price = price;
+    }
+
+
+
+    public Lease() {
+
+    }
+
     public int getLeaseID() {
         return leaseID;
     }

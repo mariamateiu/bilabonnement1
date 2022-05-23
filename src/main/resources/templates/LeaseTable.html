@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../static/LeaseTable.css">
-    <link th:href="@{LeaseTaable.css}" rel="stylesheet">
+    <link th:href="@{/LeaseTable.css}" rel="stylesheet">
+
 </head>
 <body class="Body">
 
@@ -19,156 +21,31 @@
      <div class="Table-Scrollbar">
 
      <table class="Table-lease-Box">
-
+<thead>
          <tr>
              <th>  LeaseID  </th>
              <th>   CarID   </th>
              <th>  ClientID </th>
              <th>  VIN </th>
              <th>  Price </th>
-             <th>  Limited </th>
-             <th>  Month Leased </th>
-         </tr>
 
-         <tr>
-             <td> 2323232  </td>
-             <td> 3433434  </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-         </tr>
-
-         <tr>
-             <td>  2323232     </td>
-             <td>   3433434    </td>
-             <td>    56565656   </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
-             <td> 56565656 </td>
          </tr>
 
 
+</thead>
+         <tbody>
+         <tr th:each="lease : ${leases}">
+             <td th:text="${lease.leaseID}"></td>
+             <td th:text="${lease.clientID}"></td>
+             <td th:text="${lease.carID}"></td>
+             <td th:text="${lease.VIN}"></td>
+             <td th:text="${lease.price}"></td>
+         </tr>
 
+         </tbody>
      </table>
      </div>
-
  </div>
-
-
 </div>
-
 </body>
 </html>
