@@ -23,6 +23,7 @@
      <table class="Table-lease-Box">
 <thead>
          <tr>
+          <th>Number of cars</th>
              <th>  LeaseID  </th>
              <th>  CarID   </th>
              <th>  ClientID </th>
@@ -35,7 +36,9 @@
 
 </thead>
          <tbody>
+
          <tr th:each="lease : ${leases}">
+             <td th:number="${#numbers}"></td>
              <td th:text="${lease.leaseID}"></td>
              <td th:text="${lease.clientID}"></td>
              <td th:text="${lease.carID}"></td>
@@ -46,6 +49,8 @@
          <tr>
              <th>Total price</th>
          <td th:text="${totalPrice}"></td>
+             <td th:text="${totalAmount}"></td>
+
          </tr>
 
          </tbody>

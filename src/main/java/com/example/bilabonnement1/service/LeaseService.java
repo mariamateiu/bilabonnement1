@@ -15,9 +15,9 @@ public class LeaseService {
 
 
     public ArrayList<Lease> getAllLeases(){
+        ArrayList<Lease> leases = lejeRepository.getAllLeases();
 
-
-        return lejeRepository.getAllLeases();
+        return leases;
     }
 
     public int getTotalPrice(List<Lease> leaseList){

@@ -5,14 +5,14 @@ public class Car {
     private String brand;
     private String model;
     private String VIN;
-    private boolean diesel;
-    private boolean gas;
-    private double kmL;
-    private boolean manual;
-    private double CO2gkm;
-    private boolean available;
+    private int diesel;
+    private int gas;
+    private int kmL;
+    private int manual;
+    private int CO2gkm;
+    private int available;
 
-    public Car(int carID, String brand, String model, String VIN, boolean diesel, boolean gas, double kmL, boolean manual, double CO2gkm, boolean available) {
+    public Car(int carID, String brand, String model, String VIN, int diesel, int gas, int kmL, int manual, int CO2gkm, int available) {
         this.carID = carID;
         this.brand = brand;
         this.model = model;
@@ -57,51 +57,51 @@ public class Car {
         this.VIN = VIN;
     }
 
-    public boolean isDiesel() {
+    public int getDiesel() {
         return diesel;
     }
 
-    public void setDiesel(boolean diesel) {
+    public void setDiesel(int diesel) {
         this.diesel = diesel;
     }
 
-    public boolean isGas() {
+    public int getGas() {
         return gas;
     }
 
-    public void setGas(boolean gas) {
+    public void setGas(int gas) {
         this.gas = gas;
     }
 
-    public double getKmL() {
+    public int getKmL() {
         return kmL;
     }
 
-    public void setKmL(double kmL) {
+    public void setKmL(int kmL) {
         this.kmL = kmL;
     }
 
-    public boolean isManual() {
+    public int getManual() {
         return manual;
     }
 
-    public void setManual(boolean manual) {
+    public void setManual(int manual) {
         this.manual = manual;
     }
 
-    public double getCO2gkm() {
+    public int getCO2gkm() {
         return CO2gkm;
     }
 
-    public void setCO2gkm(double CO2gkm) {
+    public void setCO2gkm(int CO2gkm) {
         this.CO2gkm = CO2gkm;
     }
 
-    public boolean isAvailable() {
+    public int getAvailable() {
         return available;
     }
 
-    public void setAvailable(boolean available) {
+    public void setAvailable(int available) {
         this.available = available;
     }
 

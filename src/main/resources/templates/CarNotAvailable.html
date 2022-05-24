@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/LeaseTable.css">
+    <link th:href="@{/LeaseTable.css}" rel="stylesheet">
+
+</head>
+<body class="Body">
+
+<div class="Background " >
+
+    <div class="Table">
+        <div >
+            <h2 class="Headline"> Car Not Available </h2>
+        </div>
+
+        <div class="knap">
+            <a th:href="@{'/allLeasedCarAvailable'}">
+                <button> Car Available</button>
+            </a>
+
+
+        </div>
+        <div class="Table-Scrollbar">
+
+            <table class="Table-lease-Box">
+                <thead>
+                <tr>
+                    <th> carID</th>
+                    <th>  brand  </th>
+                    <th>  model   </th>
+                    <th>  VIN </th>
+                    <th>  diesel </th>
+                    <th>  gas </th>
+                    <th>  kmL </th>
+                    <th>  manual </th>
+                    <th>  CO2gkm </th>
+                    <th>  available </th>
+
+
+
+                </tr>
+
+
+                </thead>
+                <tbody>
+
+                <tr th:each="car : ${cars}">
+
+                    <td th:text="${car.carID}"></td>
+                    <td th:text="${car.brand}"></td>
+                    <td th:text="${car.model}"></td>
+                    <td th:text="${car.VIN}"></td>
+                    <td th:text="${car.diesel}"></td>
+                    <td th:text="${car.gas}"></td>
+                    <td th:text="${car.kmL}"></td>
+                    <td th:text="${car.manual}"></td>
+                    <td th:text="${car.CO2gkm}"></td>
+                    <td th:text="${car.available}"></td>
+                </tr>
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
