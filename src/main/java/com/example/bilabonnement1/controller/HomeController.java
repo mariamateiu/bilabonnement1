@@ -5,23 +5,19 @@ import com.example.bilabonnement1.model.DamageReport;
 import com.example.bilabonnement1.model.Employee;
 import com.example.bilabonnement1.model.Lease;
 import com.example.bilabonnement1.repository.DamageRepository;
-import com.example.bilabonnement1.repository.LejeRepository;
+import com.example.bilabonnement1.repository.LeaseRepository;
 import com.example.bilabonnement1.service.CarService;
 import com.example.bilabonnement1.service.LeaseService;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.example.bilabonnement1.repository.*;
 import com.example.bilabonnement1.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
 
 
 @Controller
@@ -30,12 +26,12 @@ public class HomeController {
 
     CarService carService;
     LeaseService leaseService;
-    LejeRepository lejeRepository;
+    LeaseRepository leaseRepository;
     CarRepository carRepository;
 
 
-    public HomeController(LejeRepository lejeRepository, LeaseService leaseService, CarRepository carRepository, CarService carService){
-        this.lejeRepository = lejeRepository;
+    public HomeController(LeaseRepository leaseRepository, LeaseService leaseService, CarRepository carRepository, CarService carService){
+        this.leaseRepository = leaseRepository;
         this.leaseService = leaseService;
         this.carRepository = carRepository;
         this.carService=carService;
@@ -89,7 +85,7 @@ public class HomeController {
                            @RequestParam("VIN") int VIN,
                            @RequestParam("Price") int price) throws SQLException {
         Lease l = new Lease(clientID, carID, VIN, price);
-        LejeRepository lr = new LejeRepository();
+        LeaseRepository lr = new LeaseRepository();
         lr.createLeje(l);
 
         return "redirect:/";

@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
  @Repository
-public class LejeRepository {
+public class LeaseRepository {
 
 
     ConnectionManager cm = new ConnectionManager();
@@ -24,7 +24,7 @@ public class LejeRepository {
 
         Connection connection = cm.connectionToDB();
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO semestereksamen.lease(leaseID, clientID, carID, VIN, price) VALUES (?,?,?,?,?)");
+                "INSERT INTO semeksamen.lease(leaseID, clientID, carID, VIN, price) VALUES (?,?,?,?,?)");
         preparedStatement.setInt(1, lease.getLeaseID());
         preparedStatement.setInt(2, lease.getClientID());
         preparedStatement.setInt(3, lease.getCarID());

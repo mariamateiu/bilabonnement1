@@ -9,9 +9,9 @@ public class ConnectionManager {
     public static Connection connectionToDB () {
 
 
-        String url = "jdbc:mysql://localhost:3306/semestereksamen";
+        String url = "jdbc:mysql://localhost:3306/semeksamen";
         String user = "root";
-        String password = "ngv38Bdt";
+        String password = "password";
 
         try {
             connection = DriverManager.getConnection(url, user, password);
