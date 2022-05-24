@@ -1,7 +1,7 @@
 package com.example.bilabonnement1.service;
 
 import com.example.bilabonnement1.model.Lease;
-import com.example.bilabonnement1.repository.LejeRepository;
+import com.example.bilabonnement1.repository.LeaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +11,11 @@ import java.util.List;
 @Service
 public class LeaseService {
     @Autowired
-    LejeRepository lejeRepository;
+    LeaseRepository leaseRepository;
 
 
     public ArrayList<Lease> getAllLeases(){
-        ArrayList<Lease> leases = lejeRepository.getAllLeases();
+        ArrayList<Lease> leases = leaseRepository.getAllLeases();
 
         return leases;
     }
