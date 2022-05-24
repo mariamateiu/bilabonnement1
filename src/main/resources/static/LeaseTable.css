@@ -10,6 +10,7 @@
 
 .Table{
 
+    border-collapse: collapse;
 
 }
 
@@ -42,9 +43,10 @@
 }
 .Table-lease-Box {
      width: 50vh;
-    border: 0.5vh solid black;
+    border: 0.2vh solid black;
     align-items: center;
     margin-bottom: 2em;
+
 
 
 
@@ -53,18 +55,20 @@
 
 
 th{
+
     width: 50vh;
-    border: 0.5vh solid black;
-    padding: 2vh;
+    border: 2px solid black;
+    padding: 1vh;
     background-color: grey;
 
 }
 
 td{
     width: 50vh;
-    border: 0.5vh solid black;
+    border: 2px solid black;
     padding: 2vh;
     background-color: #F2F2F2;
+
 }
 
 

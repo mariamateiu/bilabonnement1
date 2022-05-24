@@ -14,7 +14,7 @@ import java.util.List;
 public class CarService {
     @Autowired
     CarRepository carRepository;
-
+// vi bruger vores service lag som vores sikkerhedslag
     public ArrayList<Car> allLeasedCar(){
         ArrayList<Car> cars = carRepository.allLeasedCar();
 

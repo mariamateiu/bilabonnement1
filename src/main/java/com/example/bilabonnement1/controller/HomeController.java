@@ -175,8 +175,7 @@ public class HomeController {
 
             System.out.println(allLeasedCars);
             model.addAttribute("cars", allLeasedCars);
-            //model.addAttribute("totalPrice",leaseService.getTotalPrice(leases));
-            // model.addAttribute("testString", "Please virk for helvede");
+
 
 
             return "/CarTable";
@@ -192,8 +191,6 @@ public class HomeController {
 
         System.out.println(cars);
         model.addAttribute("cars", cars);
-        //model.addAttribute("totalPrice",leaseService.getTotalPrice(leases));
-        // model.addAttribute("testString", "Please virk for helvede");
 
 
         return "/CarAvailable";
@@ -208,8 +205,6 @@ public class HomeController {
 
         System.out.println(cars);
         model.addAttribute("cars", cars);
-        //model.addAttribute("totalPrice",leaseService.getTotalPrice(leases));
-        // model.addAttribute("testString", "Please virk for helvede");
 
 
         return "/CarNotAvailable";
