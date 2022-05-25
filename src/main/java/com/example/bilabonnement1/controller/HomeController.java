@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 @Controller
 public class HomeController {
+    ArrayList<Employee> user = new ArrayList<>();
+
 
 
     CarService carService;
@@ -122,15 +124,16 @@ public class HomeController {
     public String loginTjek(@RequestParam("navn") String name,
                             @RequestParam("password") String password) throws SQLException {
         Employee employee = er.findUser(name);
+        user.add(0,employee);
         if (es.loginSucces(employee, password)) {
             if (employee.getType().equalsIgnoreCase("forretning")) {
-                return "MenuBusiness";
+                return "redirect:/MenuBusiness";
             }
             if (employee.getType().equalsIgnoreCase("data")) {
-                return "MenuData";
+                return "redirect:/MenuData";
             }
             if (employee.getType().equalsIgnoreCase("skade")) {
-                return "MenuDamage";
+                return "redirect:/MenuDamage";
             }
             if (!es.loginSucces(employee, password)) {
                 return "FejlLogin";
@@ -140,7 +143,30 @@ public class HomeController {
         return "FejlLogin";
     }
 
-
+    @GetMapping("/MenuData")
+    public String menuData(Model model){
+ArrayList<Employee> users = user;
+Employee em = users.get(0);
+        System.out.println(users);
+model.addAttribute("fullName",em.getFullName());
+return "MenuData";
+    }
+    @GetMapping("/MenuDamage")
+    public String menuDame(Model model){
+        ArrayList<Employee> users = user;
+        Employee em = users.get(0);
+        System.out.println(users);
+        model.addAttribute("fullName",em.getFullName());
+        return "MenuDamage";
+    }
+    @GetMapping("/MenuBusiness")
+    public String menuBusiness(Model model){
+        ArrayList<Employee> users = user;
+        Employee em = users.get(0);
+        System.out.println(users);
+        model.addAttribute("fullName",em.getFullName());
+        return "MenuBusiness";
+    }
     @GetMapping("/viewAllLeaseRegistration")
 
     public String viewAllLeaseRegistration(Model model) {

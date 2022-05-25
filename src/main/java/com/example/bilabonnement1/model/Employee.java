@@ -15,6 +15,13 @@ public class Employee {
 
     }
 
+    public Employee(int employeeID, String fullName, String password, String type) {
+        this.employeeID = employeeID;
+        this.fullName = fullName;
+        this.password = password;
+        this.type = type;
+    }
+
     public String getFullName() {
         return fullName;
     }
@@ -22,6 +29,7 @@ public class Employee {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
+
 
 
 
@@ -54,6 +62,7 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "employeeID=" + employeeID +
+                "fullName=" + fullName +
                 ", password='" + password + '\'' +
                 ", type='" + type + '\'' +
                 '}';

@@ -1,9 +1,11 @@
 package com.example.bilabonnement1.service;
 
 import com.example.bilabonnement1.model.Employee;
+import com.example.bilabonnement1.model.Lease;
 import com.example.bilabonnement1.repository.EmployeeRepository;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmployeeService {
 EmployeeRepository employeeRepository = new EmployeeRepository();
@@ -17,5 +19,12 @@ if (employee!= null){
     }
 return succes;
 }
+    public ArrayList<Employee> getAllUsers(){
+        ArrayList<Employee> users = employeeRepository.getAllUsers();
+
+        return users;
+    }
+
+
 
 }

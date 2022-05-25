@@ -13,9 +13,19 @@
 <div class="Background ">
 
     <div class="Container">
-        <h1 class="Headline">Velkommen *username*</h1>
-        <div class="Menu-box">
+        <table>
+            <tbody>
+            <tr>
+                <h1 class="Headline"> Velkommen
+                    <td class="" th:text="${fullName}"></td>
+                </h1>
 
+            </tr>
+            </tbody>
+        </table>
+
+
+        <div class="Menu-box">
 
             <a href="/RegistrerLease">
                 <button class="Button-one"> Registrer ny lease</button>
