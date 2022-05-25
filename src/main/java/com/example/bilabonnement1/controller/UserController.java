@@ -8,6 +8,7 @@ import com.example.bilabonnement1.repository.LeaseRepository;
 import com.example.bilabonnement1.service.CarService;
 import com.example.bilabonnement1.service.EmployeeService;
 import com.example.bilabonnement1.service.LeaseService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+@Controller
 public class UserController {
     ArrayList<Employee> user = new ArrayList<>();
 
