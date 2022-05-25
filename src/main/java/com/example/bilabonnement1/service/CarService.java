@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class CarService {
     @Autowired
-    CarRepository carRepository;
+    CarRepository carRepository = new CarRepository();
 // vi bruger vores service lag som vores sikkerhedslag
     public ArrayList<Car> allLeasedCar(){
         ArrayList<Car> cars = carRepository.allLeasedCar();

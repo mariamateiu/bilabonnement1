@@ -23,21 +23,13 @@ import java.util.ArrayList;
 @Controller
 public class HomeController {
     ArrayList<Employee> user = new ArrayList<>();
-
-
-
     LeaseRepository leaseRepository;
     LeaseService leaseService;
-
     CarRepository carRepository;
     CarService carService;
-
     DamageRepository damageRepository;
-
     EmployeeRepository employeeRepository = new EmployeeRepository();
     EmployeeService employeeService = new EmployeeService();
-
-
 
 
     public HomeController(LeaseRepository leaseRepository, LeaseService leaseService, CarRepository carRepository, CarService carService) {
@@ -48,224 +40,12 @@ public class HomeController {
     }
 
 
-
-
     @GetMapping("/")
     public String index() {
         return "Login";
     }
 
-    @GetMapping("/hej")
-    public String test() {
-        return "LoginFejl";
-    }
-    @GetMapping("/OpretMedarbejder")
-    public String opretMedarbejer() {
-        return "OpretBruger";
-    }
-
-
-    @PostMapping("/OpretMedarbejder")
-    public String opret(@RequestParam("fullname") String fullName,
-                        @RequestParam("password") String password,
-                        @RequestParam("type") String type) {
-
-        Employee em = new Employee();
-        if (type.equalsIgnoreCase("skade") || type.equalsIgnoreCase("data") || type.equalsIgnoreCase("forretning")) {
-            em.setFullName(fullName);
-            em.setPassword(password);
-            em.setType(type);
-            employeeRepository.createUser(em);
-            return "/Login";
-        } else {
-            return "/FejlOprettelse";
-        }
-    }
-
-    @GetMapping("/Login")
-    public String login() {
-        return "Login";
-    }
-
-    @PostMapping("/Login")
-    public String loginTjek(@RequestParam("navn") String name,
-                            @RequestParam("password") String password) throws SQLException {
-        Employee employee = employeeRepository.findUser(name);
-        user.add(0,employee);
-        if (employeeService.loginSucces(employee, password)) {
-            if (employee.getType().equalsIgnoreCase("forretning")) {
-                return "redirect:/MenuBusiness";
-            }
-            if (employee.getType().equalsIgnoreCase("data")) {
-                return "redirect:/MenuData";
-            }
-            if (employee.getType().equalsIgnoreCase("skade")) {
-                return "redirect:/MenuDamage";
-            }
-            if (!employeeService.loginSucces(employee, password)) {
-                return "FejlLogin";
-            }
-
-        }
-        return "FejlLogin";
-    }
-
-    @GetMapping("/RegistrerSkade")
-    public String Registrer() {
-        return "DamageRegistration";
-    }
-
-    @PostMapping("/RegistrerSkade")
-    public String RegistrerSkade(@RequestParam("carID") int carID,
-                                 @RequestParam("carPart") String carPart,
-                                 @RequestParam("carDamage") String carDamage,
-                                 @RequestParam("price") String price) throws SQLException {
-        DamageReport dr = new DamageReport();
-        dr.setCarID(carID);
-        dr.setCarPart(carPart);
-        dr.setDamageDescription(carDamage);
-        dr.setDamagePrice(price);
-
-        damageRepository.createDamageReport(dr);
-
-        return "redirect:/";
-    }
-
-
-    @GetMapping("/RegistrerLease")
-    public String lease() {
-        return "LeaseRegistration";
-    }
-
-    @PostMapping("/Tilbage")
-    public String tilbage(){
-        ArrayList<Employee> users = user;
-        Employee em = users.get(0);
-        if (em.getType().equalsIgnoreCase("forretning")) {
-            return "redirect:/MenuBusiness";
-        }
-        if (em.getType().equalsIgnoreCase("data")) {
-            return "redirect:/MenuData";
-        }
-        if (em.getType().equalsIgnoreCase("skade")) {
-            return "redirect:/MenuDamage";
-        }
-        return "";
-
-    }
-    @PostMapping("/RegistrerLease")
-    public String regLease(@RequestParam("Client ID") int clientID,
-                           @RequestParam("Car ID") int carID,
-                           @RequestParam("VIN") int VIN,
-                           @RequestParam("Price") int price) throws SQLException {
-        Lease l = new Lease(clientID, carID, VIN, price);
-        leaseRepository.createLeje(l);
-
-        return "redirect:/viewAllLeaseRegistration";
-    }
-
-
-
-    @GetMapping("/MenuData")
-    public String menuData(Model model){
-ArrayList<Employee> users = user;
-Employee em = users.get(0);
-        System.out.println(users);
-model.addAttribute("fullName",em.getFullName());
-return "MenuData";
-    }
-    @GetMapping("/MenuDamage")
-    public String menuDame(Model model){
-        ArrayList<Employee> users = user;
-        Employee em = users.get(0);
-        System.out.println(users);
-        model.addAttribute("fullName",em.getFullName());
-        return "MenuDamage";
-    }
-    @GetMapping("/MenuBusiness")
-    public String menuBusiness(Model model){
-        ArrayList<Employee> users = user;
-        Employee em = users.get(0);
-        System.out.println(users);
-        model.addAttribute("fullName",em.getFullName());
-        return "MenuBusiness";
-    }
-    @GetMapping("/viewAllLeaseRegistration")
-
-    public String viewAllLeaseRegistration(Model model) {
-
-        ArrayList<Lease> leases = leaseService.getAllLeases();
-
-        //tilføjer leases listen til vores model objekt, så vi kan bruge den i vores html
-        model.addAttribute("leases", leases);
-        model.addAttribute("totalPrice", leaseService.getTotalPrice(leases));
-        model.addAttribute("totalAmount", leases.size());
-
-
-        // model.addAttribute("testString", "Please virk for helvede");
-
-
-        return "/LeaseTable";
-
-    }
-
-
-    @GetMapping("/viewAllLeasedCar")
-
-    public String viewAllLeasedCar(Model model) {
-
-        ArrayList<Car> allLeasedCars = carService.allLeasedCar();
-
-        System.out.println(allLeasedCars);
-        model.addAttribute("cars", allLeasedCars);
-
-
-        return "/CarTable";
-
-    }
-
-
-    @GetMapping("/allLeasedCarAvailable")
-
-    public String allLeasedCarAvailable(Model model) {
-
-        ArrayList<Car> cars = carService.allLeasedCarAvailable();
-
-        System.out.println(cars);
-        model.addAttribute("cars", cars);
-
-
-        return "/CarAvailable";
-
-    }
-
-    @GetMapping("/allLeasedCarNotAvailable")
-
-    public String allLeasedCarNotAvailable(Model model) {
-
-        ArrayList<Car> cars = carService.allLeasedCarNotAvailable();
-
-        System.out.println(cars);
-        model.addAttribute("cars", cars);
-
-
-        return "/CarNotAvailable";
-
-    }
-
-    @GetMapping ("/SletLease")
-    public String slet(){
-        return "LeaseDele";
-    }
-
-@PostMapping("/SletLease")
-    public String sletLease(@RequestParam("leaseID") int leaseID){
-        leaseRepository.deleteLease(leaseID);
-        return "redirect:/viewAllLeaseRegistration";
-}
 
 }
-
-
 
 
