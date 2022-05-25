@@ -21,7 +21,6 @@ public class EmployeeRepository {
         } catch (SQLException e) {
             System.out.println("Kunne ikke oprette" + e);
         }
-
     }
 
     public Employee findUser(String fullName) {
