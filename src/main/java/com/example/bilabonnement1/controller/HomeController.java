@@ -26,10 +26,18 @@ public class HomeController {
 
 
 
-    CarService carService;
-    LeaseService leaseService;
     LeaseRepository leaseRepository;
+    LeaseService leaseService;
+
     CarRepository carRepository;
+    CarService carService;
+
+    DamageRepository damageRepository;
+
+    EmployeeRepository employeeRepository = new EmployeeRepository();
+    EmployeeService employeeService = new EmployeeService();
+
+
 
 
     public HomeController(LeaseRepository leaseRepository, LeaseService leaseService, CarRepository carRepository, CarService carService) {
@@ -40,9 +48,7 @@ public class HomeController {
     }
 
 
-    DamageRepository dm = new DamageRepository();
-    EmployeeRepository er = new EmployeeRepository();
-    EmployeeService es = new EmployeeService();
+
 
     @GetMapping("/")
     public String index() {
@@ -52,6 +58,56 @@ public class HomeController {
     @GetMapping("/hej")
     public String test() {
         return "LoginFejl";
+    }
+    @GetMapping("/OpretMedarbejder")
+    public String opretMedarbejer() {
+        return "OpretBruger";
+    }
+
+
+    @PostMapping("/OpretMedarbejder")
+    public String opret(@RequestParam("fullname") String fullName,
+                        @RequestParam("password") String password,
+                        @RequestParam("type") String type) {
+
+        Employee em = new Employee();
+        if (type.equalsIgnoreCase("skade") || type.equalsIgnoreCase("data") || type.equalsIgnoreCase("forretning")) {
+            em.setFullName(fullName);
+            em.setPassword(password);
+            em.setType(type);
+            employeeRepository.createUser(em);
+            return "/Login";
+        } else {
+            return "/FejlOprettelse";
+        }
+    }
+
+    @GetMapping("/Login")
+    public String login() {
+        return "Login";
+    }
+
+    @PostMapping("/Login")
+    public String loginTjek(@RequestParam("navn") String name,
+                            @RequestParam("password") String password) throws SQLException {
+        Employee employee = employeeRepository.findUser(name);
+        user.add(0,employee);
+        if (employeeService.loginSucces(employee, password)) {
+            if (employee.getType().equalsIgnoreCase("forretning")) {
+                return "redirect:/MenuBusiness";
+            }
+            if (employee.getType().equalsIgnoreCase("data")) {
+                return "redirect:/MenuData";
+            }
+            if (employee.getType().equalsIgnoreCase("skade")) {
+                return "redirect:/MenuDamage";
+            }
+            if (!employeeService.loginSucces(employee, password)) {
+                return "FejlLogin";
+            }
+
+        }
+        return "FejlLogin";
     }
 
     @GetMapping("/RegistrerSkade")
@@ -70,7 +126,7 @@ public class HomeController {
         dr.setDamageDescription(carDamage);
         dr.setDamagePrice(price);
 
-        dm.createDamageReport(dr);
+        damageRepository.createDamageReport(dr);
 
         return "redirect:/";
     }
@@ -81,67 +137,34 @@ public class HomeController {
         return "LeaseRegistration";
     }
 
+    @PostMapping("/Tilbage")
+    public String tilbage(){
+        ArrayList<Employee> users = user;
+        Employee em = users.get(0);
+        if (em.getType().equalsIgnoreCase("forretning")) {
+            return "redirect:/MenuBusiness";
+        }
+        if (em.getType().equalsIgnoreCase("data")) {
+            return "redirect:/MenuData";
+        }
+        if (em.getType().equalsIgnoreCase("skade")) {
+            return "redirect:/MenuDamage";
+        }
+        return "";
+
+    }
     @PostMapping("/RegistrerLease")
     public String regLease(@RequestParam("Client ID") int clientID,
                            @RequestParam("Car ID") int carID,
                            @RequestParam("VIN") int VIN,
                            @RequestParam("Price") int price) throws SQLException {
         Lease l = new Lease(clientID, carID, VIN, price);
-        LeaseRepository lr = new LeaseRepository();
-        lr.createLeje(l);
+        leaseRepository.createLeje(l);
 
         return "redirect:/viewAllLeaseRegistration";
     }
 
-    @GetMapping("/OpretMedarbejder")
-    public String opretMedarbejer() {
-        return "OpretBruger";
-    }
 
-    @PostMapping("/OpretMedarbejder")
-    public String opret(@RequestParam("fullname") String fullName,
-                        @RequestParam("password") String password,
-                        @RequestParam("type") String type) {
-
-        Employee em = new Employee();
-        if (type.equalsIgnoreCase("skade") || type.equalsIgnoreCase("data") || type.equalsIgnoreCase("forretning")) {
-            em.setFullName(fullName);
-            em.setPassword(password);
-            em.setType(type);
-            er.createUser(em);
-            return "/Login";
-        } else {
-            return "/FejlOprettelse";
-        }
-    }
-
-    @GetMapping("/Login")
-    public String login() {
-        return "Login";
-    }
-
-    @PostMapping("/Login")
-    public String loginTjek(@RequestParam("navn") String name,
-                            @RequestParam("password") String password) throws SQLException {
-        Employee employee = er.findUser(name);
-        user.add(0,employee);
-        if (es.loginSucces(employee, password)) {
-            if (employee.getType().equalsIgnoreCase("forretning")) {
-                return "redirect:/MenuBusiness";
-            }
-            if (employee.getType().equalsIgnoreCase("data")) {
-                return "redirect:/MenuData";
-            }
-            if (employee.getType().equalsIgnoreCase("skade")) {
-                return "redirect:/MenuDamage";
-            }
-            if (!es.loginSucces(employee, password)) {
-                return "FejlLogin";
-            }
-
-        }
-        return "FejlLogin";
-    }
 
     @GetMapping("/MenuData")
     public String menuData(Model model){
@@ -230,6 +253,16 @@ return "MenuData";
 
     }
 
+    @GetMapping ("/SletLease")
+    public String slet(){
+        return "LeaseDele";
+    }
+
+@PostMapping("/SletLease")
+    public String sletLease(@RequestParam("leaseID") int leaseID){
+        leaseRepository.deleteLease(leaseID);
+        return "redirect:/viewAllLeaseRegistration";
+}
 
 }
 

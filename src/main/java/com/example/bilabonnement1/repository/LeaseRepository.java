@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
- @Repository
+@Repository
 public class LeaseRepository {
 
 
@@ -24,7 +24,7 @@ public class LeaseRepository {
 
         Connection connection = cm.connectionToDB();
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO semeksamen.lease(leaseID, clientID, carID, VIN, price) VALUES (?,?,?,?,?)");
+                "INSERT INTO semestereksamen.lease(leaseID, clientID, carID, VIN, price) VALUES (?,?,?,?,?)");
         preparedStatement.setInt(1, lease.getLeaseID());
         preparedStatement.setInt(2, lease.getClientID());
         preparedStatement.setInt(3, lease.getCarID());
@@ -36,12 +36,11 @@ public class LeaseRepository {
     }
 
 
-
     public ArrayList<Lease> getAllLeases() {
         Connection connection = cm.connectionToDB();
 
         ArrayList<Lease> leases = new ArrayList<>();
-        String query  = "SELECT * FROM lease";
+        String query = "SELECT * FROM lease";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -53,7 +52,7 @@ public class LeaseRepository {
                 int VIN = resultSet.getInt(4);
                 int price = resultSet.getInt(5);
 
-                leases.add(new Lease(leaseID,clientID,carID,VIN,price));
+                leases.add(new Lease(leaseID, clientID, carID, VIN, price));
 
 
             }
@@ -64,8 +63,15 @@ public class LeaseRepository {
         return leases;
     }
 
+    public void deleteLease(int leaseID) {
+        String query = "DELETE * FROM semestereksamen.lease WHERE leaseID= ?";
 
-
-
-
+        Connection connection = cm.connectionToDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, leaseID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
 }
