@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 @Controller
 public class HomeController {
+    ArrayList<Employee> user = new ArrayList<>();
+
 
 
     CarService carService;
@@ -30,11 +32,11 @@ public class HomeController {
     CarRepository carRepository;
 
 
-    public HomeController(LeaseRepository leaseRepository, LeaseService leaseService, CarRepository carRepository, CarService carService){
+    public HomeController(LeaseRepository leaseRepository, LeaseService leaseService, CarRepository carRepository, CarService carService) {
         this.leaseRepository = leaseRepository;
         this.leaseService = leaseService;
         this.carRepository = carRepository;
-        this.carService=carService;
+        this.carService = carService;
     }
 
 
@@ -49,7 +51,7 @@ public class HomeController {
 
     @GetMapping("/hej")
     public String test() {
-        return "DamageRegistration";
+        return "LoginFejl";
     }
 
     @GetMapping("/RegistrerSkade")
@@ -88,7 +90,7 @@ public class HomeController {
         LeaseRepository lr = new LeaseRepository();
         lr.createLeje(l);
 
-        return "redirect:/";
+        return "redirect:/viewAllLeaseRegistration";
     }
 
     @GetMapping("/OpretMedarbejder")
@@ -102,15 +104,15 @@ public class HomeController {
                         @RequestParam("type") String type) {
 
         Employee em = new Employee();
-        em.setFullName(fullName);
-        em.setPassword(password);
-        em.setType(type);
-
-        er.createUser(em);
-
-
-        return "/Login";
-
+        if (type.equalsIgnoreCase("skade") || type.equalsIgnoreCase("data") || type.equalsIgnoreCase("forretning")) {
+            em.setFullName(fullName);
+            em.setPassword(password);
+            em.setType(type);
+            er.createUser(em);
+            return "/Login";
+        } else {
+            return "/FejlOprettelse";
+        }
     }
 
     @GetMapping("/Login")
@@ -122,66 +124,87 @@ public class HomeController {
     public String loginTjek(@RequestParam("navn") String name,
                             @RequestParam("password") String password) throws SQLException {
         Employee employee = er.findUser(name);
+        user.add(0,employee);
         if (es.loginSucces(employee, password)) {
             if (employee.getType().equalsIgnoreCase("forretning")) {
-                return "MenuBusiness";
+                return "redirect:/MenuBusiness";
             }
             if (employee.getType().equalsIgnoreCase("data")) {
-                return "MenuData";
+                return "redirect:/MenuData";
             }
             if (employee.getType().equalsIgnoreCase("skade")) {
-                return "MenuDamage";
-            } else {
-
-                    return "Brugeren findes ikke";
-                }
-
-
+                return "redirect:/MenuDamage";
             }
-            return "";
-        }
-
-
-
-                @GetMapping("/viewAllLeaseRegistration")
-
-                public String viewAllLeaseRegistration (Model model ){
-
-                    ArrayList<Lease> leases = leaseService.getAllLeases();
-
-                    //tilføjer leases listen til vores model objekt, så vi kan bruge den i vores html
-                    model.addAttribute("leases", leases);
-                    model.addAttribute("totalPrice",leaseService.getTotalPrice(leases));
-                    model.addAttribute("totalAmount",leases.size());
-
-
-                    // model.addAttribute("testString", "Please virk for helvede");
-
-
-                    return "/LeaseTable";
-
-                }
-
-
-        @GetMapping("/viewAllLeasedCar")
-
-            public String viewAllLeasedCar (Model model ){
-
-            ArrayList<Car> allLeasedCars = carService.allLeasedCar();
-
-            System.out.println(allLeasedCars);
-            model.addAttribute("cars", allLeasedCars);
-
-
-
-            return "/CarTable";
+            if (!es.loginSucces(employee, password)) {
+                return "FejlLogin";
+            }
 
         }
+        return "FejlLogin";
+    }
+
+    @GetMapping("/MenuData")
+    public String menuData(Model model){
+ArrayList<Employee> users = user;
+Employee em = users.get(0);
+        System.out.println(users);
+model.addAttribute("fullName",em.getFullName());
+return "MenuData";
+    }
+    @GetMapping("/MenuDamage")
+    public String menuDame(Model model){
+        ArrayList<Employee> users = user;
+        Employee em = users.get(0);
+        System.out.println(users);
+        model.addAttribute("fullName",em.getFullName());
+        return "MenuDamage";
+    }
+    @GetMapping("/MenuBusiness")
+    public String menuBusiness(Model model){
+        ArrayList<Employee> users = user;
+        Employee em = users.get(0);
+        System.out.println(users);
+        model.addAttribute("fullName",em.getFullName());
+        return "MenuBusiness";
+    }
+    @GetMapping("/viewAllLeaseRegistration")
+
+    public String viewAllLeaseRegistration(Model model) {
+
+        ArrayList<Lease> leases = leaseService.getAllLeases();
+
+        //tilføjer leases listen til vores model objekt, så vi kan bruge den i vores html
+        model.addAttribute("leases", leases);
+        model.addAttribute("totalPrice", leaseService.getTotalPrice(leases));
+        model.addAttribute("totalAmount", leases.size());
+
+
+        // model.addAttribute("testString", "Please virk for helvede");
+
+
+        return "/LeaseTable";
+
+    }
+
+
+    @GetMapping("/viewAllLeasedCar")
+
+    public String viewAllLeasedCar(Model model) {
+
+        ArrayList<Car> allLeasedCars = carService.allLeasedCar();
+
+        System.out.println(allLeasedCars);
+        model.addAttribute("cars", allLeasedCars);
+
+
+        return "/CarTable";
+
+    }
 
 
     @GetMapping("/allLeasedCarAvailable")
 
-    public String allLeasedCarAvailable (Model model ){
+    public String allLeasedCarAvailable(Model model) {
 
         ArrayList<Car> cars = carService.allLeasedCarAvailable();
 
@@ -195,7 +218,7 @@ public class HomeController {
 
     @GetMapping("/allLeasedCarNotAvailable")
 
-    public String allLeasedCarNotAvailable (Model model ){
+    public String allLeasedCarNotAvailable(Model model) {
 
         ArrayList<Car> cars = carService.allLeasedCarNotAvailable();
 
@@ -206,8 +229,6 @@ public class HomeController {
         return "/CarNotAvailable";
 
     }
-
-
 
 
 }

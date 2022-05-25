@@ -1,13 +1,16 @@
 package com.example.bilabonnement1.repository;
 
 import com.example.bilabonnement1.model.Employee;
+import com.example.bilabonnement1.model.Lease;
 import com.example.bilabonnement1.utility.ConnectionManager;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class EmployeeRepository {
     ConnectionManager cm = new ConnectionManager();
     Connection connection = cm.connectionToDB();
+
 
     public void createUser(Employee user) {
 
@@ -21,7 +24,6 @@ public class EmployeeRepository {
         } catch (SQLException e) {
             System.out.println("Kunne ikke oprette" + e);
         }
-
     }
 
     public Employee findUser(String fullName) {
@@ -40,4 +42,30 @@ public class EmployeeRepository {
         }
         return employee;
     }
+
+    public ArrayList<Employee> getAllUsers() {
+        Connection connection = cm.connectionToDB();
+
+        ArrayList<Employee> users = new ArrayList<>();
+        String query  = "SELECT * FROM semestereksamen.employee";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int employeeID = resultSet.getInt(1);
+                String fullName = resultSet.getString(2);
+                String password = resultSet.getString(3);
+                String type = resultSet.getString(4);
+
+
+                users.add(new Employee(employeeID,fullName,password,type));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error");
+        }
+        return users;
+    }
+
 }
