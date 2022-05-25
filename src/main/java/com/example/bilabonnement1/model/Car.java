@@ -12,6 +12,7 @@ public class Car {
     private int CO2gkm;
     private int available;
 
+
     public Car(int carID, String brand, String model, String VIN, int diesel, int gas, int kmL, int manual, int CO2gkm, int available) {
         this.carID = carID;
         this.brand = brand;

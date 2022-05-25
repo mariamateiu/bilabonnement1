@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class LeaseService {
     @Autowired
-    LeaseRepository leaseRepository;
+    LeaseRepository leaseRepository = new LeaseRepository();
 
 
     public ArrayList<Lease> getAllLeases(){

@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.ArrayList;
 @Controller
 public class DataController {
-    LeaseRepository leaseRepository;
-    LeaseService leaseService;
-    CarRepository carRepository;
-    CarService carService;
+    LeaseRepository leaseRepository = new LeaseRepository();
+    LeaseService leaseService = new LeaseService();
+    CarRepository carRepository = new CarRepository();
+    CarService carService = new CarService();
     DamageRepository damageRepository;
     EmployeeRepository employeeRepository = new EmployeeRepository();
     EmployeeService employeeService = new EmployeeService();
