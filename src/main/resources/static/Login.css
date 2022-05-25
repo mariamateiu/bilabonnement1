@@ -1,12 +1,44 @@
 body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 15vh;
+    background: lightslategray;
 }
 
+
+.row{
+    background: #F2F2F2;
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px;
+}
+
+img{
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.form-row{
+    padding: 0;
+    margin: 0;
+}
+
+.btn1{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn1:hover{
+    background: white;
+    border: 1px solid;
+    color: black;
+}
+
+/*
 .Menu-box{
-    display: flex;
+    display: relative;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
@@ -19,17 +51,29 @@ body{
 }
 
 .input-felt{
-
+    position: absolute;
     top: 250px;
     height: 40px;
     width: 248px;
     border-radius: 25px;
-    border-color:#F2F2F2 ;
+    border-color:#F2F2F2;
     background-color: #F2F2F2;
 
-}
 
+}
+.input-felt2{
+    position: absolute;
+    top: 500px;
+    height: 40px;
+    width: 248px;
+    border-radius: 25px;
+    border-color:#F2F2F2;
+    background-color: #F2F2F2;
+
+
+}
 .submit-button{
+    position: absolute;
     height: 6vh;
     width: 120px;
     border-radius: 20px;
@@ -41,3 +85,9 @@ body{
 .submit-button:hover{
     opacity: 0.5;
 }
+
+.container{
+
+}
+
+ */
