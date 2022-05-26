@@ -62,7 +62,6 @@ public class EmployeeRepository {
                 users.add(new Employee(employeeID,fullName,password,type));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             System.out.println("Error");
         }
         return users;

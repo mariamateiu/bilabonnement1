@@ -64,14 +64,17 @@ public class LeaseRepository {
     }
 
     public void deleteLease(int leaseID) {
-        String query = "DELETE * FROM semestereksamen.lease WHERE leaseID= ?";
-
         Connection connection = cm.connectionToDB();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE * FROM semestereksamen.lease WHERE leaseID=leaseID");
             preparedStatement.setInt(1, leaseID);
             preparedStatement.executeUpdate();
+
         } catch (SQLException e) {
+            System.out.println("fejl" + e);
+
         }
+
+
     }
 }

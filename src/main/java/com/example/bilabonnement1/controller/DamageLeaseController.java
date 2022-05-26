@@ -18,7 +18,7 @@ import java.sql.SQLException;
 
 @Controller
 public class DamageLeaseController {
-    LeaseRepository leaseRepository;
+    LeaseRepository leaseRepository = new LeaseRepository();
     LeaseService leaseService;
     CarRepository carRepository;
     CarService carService;
