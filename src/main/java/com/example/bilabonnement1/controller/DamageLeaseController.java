@@ -40,15 +40,15 @@ public class DamageLeaseController {
                                  @RequestParam("carPart") String carPart,
                                  @RequestParam("carDamage") String carDamage,
                                  @RequestParam("price") int price) throws SQLException {
-        DamageReport dr = new DamageReport();
-        dr.setCarID(carID);
-        dr.setCarPart(carPart);
-        dr.setDamageDescription(carDamage);
-        dr.setDamagePrice(price);
+        if (carService.carFound(carID)) {
+            DamageReport dr = new DamageReport(carID,carPart, carDamage,price);
+            damageRepository.createDamageReport(dr);
+            return "redirect:/allDamageReports";
+        }
+        else {
+            return "FejlLogin";
+        }
 
-        damageRepository.createDamageReport(dr);
-
-        return "redirect:/";
     }
 
 
