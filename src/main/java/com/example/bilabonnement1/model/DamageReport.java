@@ -5,8 +5,23 @@ public class DamageReport {
     private int carID;
     private String carPart;
     private String damageDescription;
-    private String damagePrice;
+    private int damagePrice;
     private int customerID;
+
+    public DamageReport(int damageReportID, int carID, String carPart, String damageDescription, int damagePrice) {
+        this.damageReportID = damageReportID;
+        this.carID = carID;
+        this.carPart = carPart;
+        this.damageDescription = damageDescription;
+        this.damagePrice = damagePrice;
+    }
+
+    public DamageReport(int carID, String carPart, String damageDescription, int damagePrice) {
+        this.carID = carID;
+        this.carPart = carPart;
+        this.damageDescription = damageDescription;
+        this.damagePrice = damagePrice;
+    }
 
     public int getCustomerID() {
         return customerID;
@@ -51,11 +66,11 @@ public class DamageReport {
         this.damageDescription = damageDescription;
     }
 
-    public String getDamagePrice() {
+    public int getDamagePrice() {
         return damagePrice;
     }
 
-    public void setDamagePrice(String damagePrice) {
+    public void setDamagePrice(int damagePrice) {
         this.damagePrice = damagePrice;
     }
 

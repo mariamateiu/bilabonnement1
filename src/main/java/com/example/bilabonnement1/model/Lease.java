@@ -9,7 +9,7 @@ public class Lease {
     private boolean limitedLease;
     private int monthLeased;
 
-    public Lease( int clientID, int carID, int VIN, int price) {
+    public Lease(int clientID, int carID, int VIN, int price) {
         this.clientID = clientID;
         this.carID = carID;
         this.VIN = VIN;

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Damage Table</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+    <!--  <link rel="stylesheet" href="../static/LeaseTable.css"> -->
+    <!-- <link th:href="@{/LeaseTable.css}" rel="stylesheet"> -->
+
+</head>
+<body style="align-items: center; justify-content: center; display: flex;  background-color: lightslategray"
+      class="Body">
+
+
+<div style="width: 95%;  background-color: lightslategray " class="Background ">
+
+    <nav class="navbar ">
+        <div>
+            <form action="/Tilbage" method="post">
+                <button style="float: bottom" class="btn btn-outline-dark">Back</button>
+            </form>
+        </div>
+        <div style="align-items: center; justify-content: center; display: flex; color: #F2F2F2"
+             class="container-fluid">
+            <h2 class="Headline"> Lease </h2>
+        </div>
+
+
+    </nav>
+    <div class="Table">
+
+        <div class="Table-Scrollbar">
+
+            <table class="table table-bordered border-primary">
+                <thead>
+                <tr class="table-secondary">
+
+                    <th scope="col"> LeaseID</th>
+                    <th scope="col"> CarID</th>
+                    <th scope="col"> ClientID</th>
+                    <th scope="col"> VIN</th>
+                    <th scope="col"> Price</th>
+
+
+                </tr>
+
+
+                </thead>
+                <tbody>
+
+
+                <th scope="row" th:text="${lease.leaseID}"></th>
+                <td th:text="${lease.clientID}"></td>
+                <td th:text="${lease.carID}"></td>
+                <td th:text="${lease.VIN}"></td>
+                <td th:text="${lease.price}"></td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
