@@ -18,6 +18,10 @@
 <div style="width: 95%;  background-color: lightslategray" class="Background " >
 
     <nav class="navbar ">
+        <div>
+            <form action="/Tilbage" method="post">
+                <button style="float: bottom" class="btn btn-outline-dark" >Back</button>
+            </form></div>
         <div style="align-items: center; justify-content: center; display: flex ;color: #F2F2F2" class="container-fluid">
             <h2 class="Headline"> Unavailable cars  </h2>
         </div>
@@ -29,7 +33,7 @@
         </div>
         <div style=" float: right" class="knap">
             <a  th:href="@{'/viewAllLeasedCar'}">
-                <button  type ="button" class="btn btn-secondary"> All cars</button>
+                <button  type ="button" class="btn btn-secondary"> View all cars</button>
             </a>
 
         </div>
