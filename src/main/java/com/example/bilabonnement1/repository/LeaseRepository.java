@@ -1,14 +1,12 @@
 package com.example.bilabonnement1.repository;
 
+import com.example.bilabonnement1.model.DamageReport;
 import com.example.bilabonnement1.model.Lease;
 import com.example.bilabonnement1.utility.ConnectionManager;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -76,5 +74,25 @@ public class LeaseRepository {
         }
 
 
+    }
+
+    public Lease findLease(int leaseID) {
+        Lease lease = null;
+        Connection connection = cm.connectionToDB();
+        try {
+            Statement statement = connection.createStatement();
+            String sql = "SELECT * FROM semestereksamen.lease WHERE leaseID = '" + leaseID + "'";
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                int clientID = resultSet.getInt("clientID");
+                int carID = resultSet.getInt("carID");
+                int VIN = resultSet.getInt("VIN");
+                int price = resultSet.getInt("price");
+                lease = new Lease(leaseID, carID, clientID,VIN, price);
+            }
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde report" + e);
+        }
+        return lease;
     }
 }

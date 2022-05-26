@@ -92,6 +92,21 @@ public class DamageRepository {
             return damageReport;
         }
 
+    public void deleteReport(int damageReportID) {
+        Connection connection = cm.connectionToDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM semestereksamen.damagereport WHERE damagereportID=?");
+            preparedStatement.setInt(1, damageReportID);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("fejl" + e);
+
+        }
+
+
+    }
+
     }
 
 
