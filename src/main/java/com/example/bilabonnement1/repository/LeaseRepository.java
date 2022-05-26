@@ -66,7 +66,7 @@ public class LeaseRepository {
     public void deleteLease(int leaseID) {
         Connection connection = cm.connectionToDB();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE * FROM semestereksamen.lease WHERE leaseID=leaseID");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM semestereksamen.lease WHERE leaseID=?");
             preparedStatement.setInt(1, leaseID);
             preparedStatement.executeUpdate();
 

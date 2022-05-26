@@ -7,9 +7,11 @@ import com.example.bilabonnement1.repository.DamageRepository;
 import com.example.bilabonnement1.repository.EmployeeRepository;
 import com.example.bilabonnement1.repository.LeaseRepository;
 import com.example.bilabonnement1.service.CarService;
+import com.example.bilabonnement1.service.DamageService;
 import com.example.bilabonnement1.service.EmployeeService;
 import com.example.bilabonnement1.service.LeaseService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,9 +24,10 @@ public class DamageLeaseController {
     LeaseService leaseService;
     CarRepository carRepository;
     CarService carService;
-    DamageRepository damageRepository;
+    DamageRepository damageRepository = new DamageRepository();
     EmployeeRepository employeeRepository = new EmployeeRepository();
     EmployeeService employeeService = new EmployeeService();
+    DamageService damageService = new DamageService();
 
 
     @GetMapping("/RegistrerSkade")
@@ -36,7 +39,7 @@ public class DamageLeaseController {
     public String RegistrerSkade(@RequestParam("carID") int carID,
                                  @RequestParam("carPart") String carPart,
                                  @RequestParam("carDamage") String carDamage,
-                                 @RequestParam("price") String price) throws SQLException {
+                                 @RequestParam("price") int price) throws SQLException {
         DamageReport dr = new DamageReport();
         dr.setCarID(carID);
         dr.setCarPart(carPart);
@@ -67,12 +70,29 @@ public class DamageLeaseController {
 
     @GetMapping("/SletLease")
     public String slet() {
-        return "LeaseDele";
+        return "LeaseDelete";
     }
 
     @PostMapping("/SletLease")
     public String sletLease(@RequestParam("leaseID") int leaseID) {
         leaseRepository.deleteLease(leaseID);
         return "redirect:/viewAllLeaseRegistration";
+    }
+
+    @GetMapping("/FindReport")
+    public String findReport(){
+        return "FindDamage";
+    }
+
+    @PostMapping("/FindReport")
+    public String find(Model model,
+                       @RequestParam("reportID") int damageReportID){
+        DamageReport damageReport = damageRepository.findReport(damageReportID);
+model.addAttribute("report",damageReport);
+
+return "FindDamageTaable";
+
+
+
     }
 }
