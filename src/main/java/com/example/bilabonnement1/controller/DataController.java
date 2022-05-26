@@ -1,12 +1,14 @@
 package com.example.bilabonnement1.controller;
 
 import com.example.bilabonnement1.model.Car;
+import com.example.bilabonnement1.model.DamageReport;
 import com.example.bilabonnement1.model.Lease;
 import com.example.bilabonnement1.repository.CarRepository;
 import com.example.bilabonnement1.repository.DamageRepository;
 import com.example.bilabonnement1.repository.EmployeeRepository;
 import com.example.bilabonnement1.repository.LeaseRepository;
 import com.example.bilabonnement1.service.CarService;
+import com.example.bilabonnement1.service.DamageService;
 import com.example.bilabonnement1.service.EmployeeService;
 import com.example.bilabonnement1.service.LeaseService;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
+
 @Controller
 public class DataController {
     LeaseRepository leaseRepository = new LeaseRepository();
@@ -23,6 +26,7 @@ public class DataController {
     DamageRepository damageRepository;
     EmployeeRepository employeeRepository = new EmployeeRepository();
     EmployeeService employeeService = new EmployeeService();
+    DamageService damageService = new DamageService();
 
     @GetMapping("/viewAllLeaseRegistration")
 
@@ -82,4 +86,14 @@ public class DataController {
 
     }
 
+    @GetMapping("/allDamageReports")
+    public String DamageTable(Model model) {
+        ArrayList<DamageReport> reports = damageService.getAllReports();
+
+        model.addAttribute("reports", reports);
+
+        return "DamageTable";
+    }
 }
+
+
