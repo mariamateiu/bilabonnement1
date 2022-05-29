@@ -23,24 +23,11 @@ public class DamageReport {
         this.damagePrice = damagePrice;
     }
 
-    public int getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
-
-    public DamageReport(){
-    }
 
     public int getDamageReportID() {
         return damageReportID;
     }
 
-    public void setDamageReportID(int damageReportID) {
-        this.damageReportID = damageReportID;
-    }
 
     public int getCarID() {
         return carID;
