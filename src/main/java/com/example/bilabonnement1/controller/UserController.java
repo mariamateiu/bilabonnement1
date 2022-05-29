@@ -1,13 +1,8 @@
 package com.example.bilabonnement1.controller;
 
 import com.example.bilabonnement1.model.Employee;
-import com.example.bilabonnement1.repository.CarRepository;
-import com.example.bilabonnement1.repository.DamageRepository;
 import com.example.bilabonnement1.repository.EmployeeRepository;
-import com.example.bilabonnement1.repository.LeaseRepository;
-import com.example.bilabonnement1.service.CarService;
 import com.example.bilabonnement1.service.EmployeeService;
-import com.example.bilabonnement1.service.LeaseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +14,8 @@ import java.util.ArrayList;
 
 @Controller
 public class UserController {
-    ArrayList<Employee> user = new ArrayList<>();
+    ArrayList<Employee> employees = new ArrayList<>();
 
-    LeaseRepository leaseRepository;
-    LeaseService leaseService;
-    CarRepository carRepository;
-    CarService carService;
-    DamageRepository damageRepository;
     EmployeeRepository employeeRepository = new EmployeeRepository();
     EmployeeService employeeService = new EmployeeService();
 
@@ -62,7 +52,7 @@ public class UserController {
     public String loginTjek(@RequestParam("navn") String name,
                             @RequestParam("password") String password) throws SQLException {
         Employee employee = employeeRepository.findUser(name);
-        user.add(0, employee);
+        employees.add(0, employee);    // Bruges til at printe navn på medarbejeren på menu-siderne
         if (employeeService.loginSucces(employee, password)) {
             if (employee.getType().equalsIgnoreCase("forretning")) {
                 return "redirect:/MenuBusiness";
@@ -83,35 +73,28 @@ public class UserController {
 
     @GetMapping("/MenuData")
     public String menuData(Model model) {
-        ArrayList<Employee> users = user;
-        Employee em = users.get(0);
-        System.out.println(users);
+        Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
         model.addAttribute("fullName", em.getFullName());
         return "MenuData";
     }
 
     @GetMapping("/MenuDamage")
     public String menuDame(Model model) {
-        ArrayList<Employee> users = user;
-        Employee em = users.get(0);
-        System.out.println(users);
+        Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
         model.addAttribute("fullName", em.getFullName());
         return "MenuDamage";
     }
 
     @GetMapping("/MenuBusiness")
     public String menuBusiness(Model model) {
-        ArrayList<Employee> users = user;
-        Employee em = users.get(0);
-        System.out.println(users);
+        Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
         model.addAttribute("fullName", em.getFullName());
         return "MenuBusiness";
     }
 
     @PostMapping("/Tilbage")
     public String tilbage() {
-        ArrayList<Employee> users = user;
-        Employee em = users.get(0);
+        Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
         if (em.getType().equalsIgnoreCase("forretning")) {
             return "redirect:/MenuBusiness";
         }
