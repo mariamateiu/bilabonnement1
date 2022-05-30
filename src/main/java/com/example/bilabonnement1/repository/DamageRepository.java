@@ -1,9 +1,6 @@
 package com.example.bilabonnement1.repository;
 
-import com.example.bilabonnement1.model.DamageRegistration;
 import com.example.bilabonnement1.model.DamageReport;
-import com.example.bilabonnement1.model.Employee;
-import com.example.bilabonnement1.model.Lease;
 import com.example.bilabonnement1.utility.ConnectionManager;
 
 import java.sql.*;
@@ -13,21 +10,6 @@ public class DamageRepository {
 
 
     ConnectionManager cm = new ConnectionManager();
-
-    public void createDamageRegistration( DamageRegistration damageRegistration) throws SQLException {
-        Connection connection = cm.connectionToDB();
-
-        PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO semestereksamen.damageregistration(damageregistrationID, leaseID, damagereportID) VALUES (?,?,?)");
-
-        preparedStatement.setInt(1,damageRegistration.getDamageRegistrationID());
-        preparedStatement.setInt(2,damageRegistration.getLeaseID());
-        preparedStatement.setInt(3,damageRegistration.getDamageReportID());
-
-
-        preparedStatement.executeUpdate();
-
-    }
 
     public void createDamageReport( DamageReport damageReport) throws SQLException {
         Connection connection = cm.connectionToDB();

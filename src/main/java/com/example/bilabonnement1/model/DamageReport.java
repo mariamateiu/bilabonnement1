@@ -6,21 +6,24 @@ public class DamageReport {
     private String carPart;
     private String damageDescription;
     private int damagePrice;
-    private int customerID;
+    private int clientID;
 
-    public DamageReport(int damageReportID, int carID, String carPart, String damageDescription, int damagePrice) {
+    public DamageReport(int damageReportID, int clientID, int carID, String carPart, String damageDescription, int damagePrice) {
         this.damageReportID = damageReportID;
+        this.clientID = clientID;
         this.carID = carID;
         this.carPart = carPart;
         this.damageDescription = damageDescription;
         this.damagePrice = damagePrice;
     }
 
-    public DamageReport(int carID, String carPart, String damageDescription, int damagePrice) {
+    public DamageReport(int clientID, int carID, String carPart, String damageDescription, int damagePrice) {
+        this.clientID = clientID;
         this.carID = carID;
         this.carPart = carPart;
         this.damageDescription = damageDescription;
         this.damagePrice = damagePrice;
+
     }
 
 

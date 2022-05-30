@@ -79,12 +79,13 @@ public class DamageLeaseController {
     }
 
     @PostMapping("/RegistrerSkade")
-    public String registrerSkade(@RequestParam("carID") int carID,
+    public String registrerSkade(@RequestParam("clientID") int clientID,
+                                 @RequestParam("carID") int carID,
                                  @RequestParam("carPart") String carPart,
                                  @RequestParam("carDamage") String carDamage,
                                  @RequestParam("price") int price) throws SQLException {
         if (carService.carFound(carID)) {              // Tjekker om det indtastede carID matcher med en bil i databasen
-            DamageReport dr = new DamageReport(carID,carPart, carDamage,price);
+            DamageReport dr = new DamageReport(clientID,carID,carPart, carDamage,price);
             damageRepository.createDamageReport(dr);
             return "redirect:/allDamageReports";
         }
