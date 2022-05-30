@@ -9,6 +9,8 @@ public class Lease {
     private boolean limitedLease;
     private int monthLeased;
 
+    public Lease() {}
+
     public Lease(int clientID, int carID, int VIN, int price) {
         this.clientID = clientID;
         this.carID = carID;
@@ -25,10 +27,6 @@ public class Lease {
     }
 
 
-
-    public Lease() {
-
-    }
 
     public int getLeaseID() {
         return leaseID;

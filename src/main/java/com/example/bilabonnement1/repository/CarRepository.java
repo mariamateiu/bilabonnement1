@@ -12,18 +12,10 @@ import java.util.ArrayList;
 @Repository
 public class CarRepository {
     ConnectionManager cm = new ConnectionManager();
+    Connection connection = cm.connectionToDB();
 
-    /*
-    public void chooseCar(Car car) throws SQLException {
-
-
-
-    }
-
-     */
 
     public ArrayList<Car> allLeasedCar() {
-        Connection connection = cm.connectionToDB();
 
         ArrayList<Car> cars = new ArrayList<>();
         String query = "SELECT * FROM car";
@@ -54,8 +46,6 @@ public class CarRepository {
     }
 
     public ArrayList<Car> allLeasedCarAvailable() {
-        Connection connection = cm.connectionToDB();
-
         ArrayList<Car> cars = new ArrayList<>();
         String query = "SELECT * FROM car where car_available = 1";
 
@@ -86,8 +76,6 @@ public class CarRepository {
 
 
     public ArrayList<Car> allLeasedCarNotAvailable() {
-        Connection connection = cm.connectionToDB();
-
         ArrayList<Car> cars = new ArrayList<>();
         String query = "SELECT * FROM car where car_available = 0";
 
@@ -117,7 +105,6 @@ public class CarRepository {
     }
 
     public Car findCar(int carID) {
-        Connection connection = cm.connectionToDB();
         Car car = null;
         try {
             Statement statement = connection.createStatement();

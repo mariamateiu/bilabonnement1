@@ -2,14 +2,9 @@ package com.example.bilabonnement1.controller;
 
 import com.example.bilabonnement1.model.DamageReport;
 import com.example.bilabonnement1.model.Lease;
-import com.example.bilabonnement1.repository.CarRepository;
 import com.example.bilabonnement1.repository.DamageRepository;
-import com.example.bilabonnement1.repository.EmployeeRepository;
 import com.example.bilabonnement1.repository.LeaseRepository;
 import com.example.bilabonnement1.service.CarService;
-import com.example.bilabonnement1.service.DamageService;
-import com.example.bilabonnement1.service.EmployeeService;
-import com.example.bilabonnement1.service.LeaseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,19 +23,19 @@ public class DamageLeaseController {
 
 
 
-    @GetMapping("/RegistrerLease")
-    public String registrerLease() {
+    @GetMapping("/CreateLease")
+    public String createLease() {
         return "LeaseRegistration";
     }
 
-    @PostMapping("/RegistrerLease")
-    public String registrerLease(@RequestParam("Client ID") int clientID,
-                           @RequestParam("Car ID") int carID,
-                           @RequestParam("VIN") int VIN,
-                           @RequestParam("Price") int price) throws SQLException {
+    @PostMapping("/CreateLease")
+    public String createLease(@RequestParam("client ID") int clientID,
+                              @RequestParam("Car ID") int carID,
+                              @RequestParam("VIN") int VIN,
+                              @RequestParam("Price") int price) throws SQLException {
         if (carService.carFound(carID)) {              // Tjekker om det indtastede carID matcher med en bil i databasen
             Lease l = new Lease(clientID, carID, VIN, price);
-            leaseRepository.createLeje(l);
+            leaseRepository.createLease(l);
 
             return "redirect:/viewAllLeaseRegistration";
         } else {
@@ -63,27 +58,27 @@ public class DamageLeaseController {
         return "FindLeaseTaable";
     }
 
-    @GetMapping("/SletLease")
-    public String sletLease() {
+    @GetMapping("/DeleteLease")
+    public String deleteLease() {
         return "LeaseDelete";
     }
 
-    @PostMapping("/SletLease")
-    public String sletLease(@RequestParam("leaseID") int leaseID) {
+    @PostMapping("/DeleteLease")
+    public String deleteLease(@RequestParam("leaseID") int leaseID) {
         leaseRepository.deleteLease(leaseID);
         return "redirect:/viewAllLeaseRegistration";
     }
-    @GetMapping("/RegistrerSkade")
-    public String registrerSkade() {
+    @GetMapping("/CreateDamageReport")
+    public String createDamageReport() {
         return "DamageRegistration";
     }
 
-    @PostMapping("/RegistrerSkade")
-    public String registrerSkade(@RequestParam("clientID") int clientID,
-                                 @RequestParam("carID") int carID,
-                                 @RequestParam("carPart") String carPart,
-                                 @RequestParam("carDamage") String carDamage,
-                                 @RequestParam("price") int price) throws SQLException {
+    @PostMapping("/CreateDamageReport")
+    public String createDamageReport(@RequestParam("clientID") int clientID,
+                                     @RequestParam("carID") int carID,
+                                     @RequestParam("carPart") String carPart,
+                                     @RequestParam("carDamage") String carDamage,
+                                     @RequestParam("price") int price) throws SQLException {
         if (carService.carFound(carID)) {              // Tjekker om det indtastede carID matcher med en bil i databasen
             DamageReport dr = new DamageReport(clientID,carID,carPart, carDamage,price);
             damageRepository.createDamageReport(dr);
@@ -108,13 +103,13 @@ public class DamageLeaseController {
 
         return "FindDamageTaable";
     }
-    @GetMapping("/SletDamage")
-    public String sletDamage() {
+    @GetMapping("/DeleteDamage")
+    public String deleteDamageReport() {
         return "DeleteDamage";
     }
 
-    @PostMapping("/SletDamage")
-    public String sletDamage(@RequestParam("reportID") int damageReportID) {
+    @PostMapping("/DeleteDamage")
+    public String deleteDamageReport(@RequestParam("reportID") int damageReportID) {
         damageRepository.deleteReport(damageReportID);
         return "redirect:/allDamageReports";
     }

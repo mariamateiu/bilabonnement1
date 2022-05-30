@@ -24,7 +24,6 @@ public class DataController {
     DamageService damageService = new DamageService();
 
     @GetMapping("/viewAllLeaseRegistration")
-
     public String viewAllLeaseRegistration(Model model) {
 
         ArrayList<Lease> leases = leaseService.getAllLeases();
@@ -82,7 +81,7 @@ public class DataController {
     }
 
     @GetMapping("/allDamageReports")
-    public String DamageTable(Model model) {
+    public String damageTable(Model model) {
         ArrayList<DamageReport> reports = damageService.getAllReports();
 
         model.addAttribute("reports", reports);

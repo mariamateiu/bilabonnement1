@@ -8,12 +8,11 @@ import java.util.ArrayList;
 
 public class DamageRepository {
 
-
     ConnectionManager cm = new ConnectionManager();
+    Connection connection = cm.connectionToDB();
+
 
     public void createDamageReport( DamageReport damageReport) throws SQLException {
-        Connection connection = cm.connectionToDB();
-
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "INSERT INTO semestereksamen.damagereport(damagereportID, clientID, carID, car_part, damage_description, damage_price) VALUES (?,?,?,?,?,?)");
 
@@ -29,7 +28,6 @@ public class DamageRepository {
     }
 
     public ArrayList<DamageReport> getAllReports() {
-        Connection connection = cm.connectionToDB();
 
         ArrayList<DamageReport> reports = new ArrayList<>();
         String query = "SELECT * FROM damagereport";
@@ -58,7 +56,6 @@ public class DamageRepository {
 
     public DamageReport findReport(int damageReportID){
             DamageReport damageReport = null;
-        Connection connection = cm.connectionToDB();
             try {
                 Statement statement = connection.createStatement();
                 String sql = "SELECT * FROM semestereksamen.damagereport WHERE damagereportID = '" + damageReportID + "'";
@@ -78,7 +75,6 @@ public class DamageRepository {
         }
 
     public void deleteReport(int damageReportID) {
-        Connection connection = cm.connectionToDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM semestereksamen.damagereport WHERE damagereportID=?");
             preparedStatement.setInt(1, damageReportID);

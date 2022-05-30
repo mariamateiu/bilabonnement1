@@ -20,19 +20,19 @@ public class UserController {
     EmployeeService employeeService = new EmployeeService();
 
 
-    @GetMapping("/OpretMedarbejder")
-    public String opretMedarbejer() {
+    @GetMapping("/CreateUser")
+    public String createEmployeeUser() {
         return "OpretBruger";
     }
 
 
-    @PostMapping("/OpretMedarbejder")
-    public String opret(@RequestParam("fullname") String fullName,
-                        @RequestParam("password") String password,
-                        @RequestParam("type") String type) {
+    @PostMapping("/CreateUser")
+    public String createEmployeeUser(@RequestParam("fullname") String fullName,
+                                     @RequestParam("password") String password,
+                                     @RequestParam("type") String type) {
 
         Employee em = new Employee();
-        if (type.equalsIgnoreCase("skade") || type.equalsIgnoreCase("data") || type.equalsIgnoreCase("forretning")) {
+        if (type.equalsIgnoreCase("damage") || type.equalsIgnoreCase("data") || type.equalsIgnoreCase("business")) {
             em.setFullName(fullName);
             em.setPassword(password);
             em.setType(type);
@@ -49,18 +49,18 @@ public class UserController {
     }
 
     @PostMapping("/Login")
-    public String loginTjek(@RequestParam("navn") String name,
-                            @RequestParam("password") String password) throws SQLException {
+    public String login(@RequestParam("navn") String name,
+                        @RequestParam("password") String password) throws SQLException {
         Employee employee = employeeRepository.findUser(name);
         employees.add(0, employee);    // Bruges til at printe navn på medarbejeren på menu-siderne
         if (employeeService.loginSucces(employee, password)) {
-            if (employee.getType().equalsIgnoreCase("forretning")) {
+            if (employee.getType().equalsIgnoreCase("business")) {
                 return "redirect:/MenuBusiness";
             }
             if (employee.getType().equalsIgnoreCase("data")) {
                 return "redirect:/MenuData";
             }
-            if (employee.getType().equalsIgnoreCase("skade")) {
+            if (employee.getType().equalsIgnoreCase("damage")) {
                 return "redirect:/MenuDamage";
             }
             if (!employeeService.loginSucces(employee, password)) {
@@ -80,7 +80,7 @@ public class UserController {
 
 
     @GetMapping("/MenuDamage")
-    public String menuDame(Model model) {
+    public String menuDamage(Model model) {
         Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
         model.addAttribute("fullName", em.getFullName());
         return "MenuDamage";
@@ -93,24 +93,24 @@ public class UserController {
         return "MenuBusiness";
     }
 
-    @PostMapping("/Tilbage")
-    public String tilbage() {
+    @PostMapping("/Back")
+    public String goBack() {
         Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
-        if (em.getType().equalsIgnoreCase("forretning")) {
+        if (em.getType().equalsIgnoreCase("business")) {
             return "redirect:/MenuBusiness";
         }
         if (em.getType().equalsIgnoreCase("data")) {
             return "redirect:/MenuData";
         }
-        if (em.getType().equalsIgnoreCase("skade")) {
+        if (em.getType().equalsIgnoreCase("damage")) {
             return "redirect:/MenuDamage";
         }
         return "";
 
     }
 
-    @PostMapping("/Logud")
-    public String logud(){
+    @PostMapping("/Logout")
+    public String logOut(){
         employees.remove(0);      //Sletter den bruger der er logget ind, fra arraylisten
         return "/Login";
 
