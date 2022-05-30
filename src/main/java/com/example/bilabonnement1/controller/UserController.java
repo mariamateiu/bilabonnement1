@@ -52,6 +52,9 @@ public class UserController {
     public String loginTjek(@RequestParam("navn") String name,
                             @RequestParam("password") String password) throws SQLException {
         Employee employee = employeeRepository.findUser(name);
+        if(employee == null){
+            return "FejlLogin";
+        }
         employees.add(0, employee);    // Bruges til at printe navn på medarbejeren på menu-siderne
         if (employeeService.loginSucces(employee, password)) {
             if (employee.getType().equalsIgnoreCase("forretning")) {
@@ -73,19 +76,14 @@ public class UserController {
 
     @GetMapping("/MenuData")
     public String menuData(Model model) {
-        if (employees.get(0) == null){
-            return "FejlLogin";
+            Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
+            model.addAttribute("fullName", em.getFullName());
+            return "MenuData";
         }
-        Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
-        model.addAttribute("fullName", em.getFullName());
-        return "MenuData";
-    }
+
 
     @GetMapping("/MenuDamage")
     public String menuDame(Model model) {
-        if (employees.get(0) == null){
-            return "FejlLogin";
-        }
         Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
         model.addAttribute("fullName", em.getFullName());
         return "MenuDamage";
@@ -93,9 +91,6 @@ public class UserController {
 
     @GetMapping("/MenuBusiness")
     public String menuBusiness(Model model) {
-        if (employees.get(0) == null){
-            return "FejlLogin";
-        }
         Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
         model.addAttribute("fullName", em.getFullName());
         return "MenuBusiness";
