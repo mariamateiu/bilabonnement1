@@ -3,12 +3,97 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lease Side</title>
-    <link rel="stylesheet" href="../static/LeaseRegistration.css">
-    <link th:href="@{LeaseRegistration.css}" rel="stylesheet">
-</head>
-<body>
+    <title>Employee Login</title>
+    <link rel="stylesheet" href="../static/LeaseRegistration.css.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link th:href="@{LeaseRegistration.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../static/LeaseRegistration.css">
+
+</head>
+
+<body class="body">
+
+<!-- <div class="Menu-box">
+    <form action="/Login" method="post">
+        <input type="text" placeholder="navn" name="navn" required class="input-felt" >
+        <input type="text" placeholder="password" name="password" required class="input-felt2">
+    <button class="submit-button" type="submit"> Done </button>
+    </form>
+</div> -->
+
+<div class="Form my-4 mx-5" style="width: 100%; margin: auto">
+    <form class="container" action="/LeaseRegistration" method="post">
+
+        <div class="row no-gutters">
+
+            <!--
+            <div class ="col-lg-5">
+                 <img th:src=@{assets/symbol-logo.png} src="assets/symbol-logo.png alt="symbol">
+            </div> -->
+
+            <!-- taget fra yt video https://www.youtube.com/watch?v=Bwk-Q_Ua-jM -->
+
+            <div class ="col-lg-3">
+                <!-- <img src="https://www.colorcombos.com/images/colors/F2F2F2.png" class="img-fluid" alt="..."> -->
+            </div>
+
+            <div class="col-lg-7 px-5 pt-5">
+                <h1 class="font-weight-bold py-3">Bilabonnement</h1>
+                <h4>Registration of lease contract</h4>
+                <form>
+                    <div class="form-row">
+                        <div class="col-lg-12">
+                            <input type="number" placeholder="LeaseID" name="lease ID" class="form-control my-3 p-4">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-12">
+                            <input type="number" placeholder="ClientID" name="client ID" class="form-control my-3 p-4">
+                        </div>
+                    </div><div class="form-row">
+                    <div class="col-lg-12">
+                        <input type="number" placeholder="LeaseID" name="lease ID" class="form-control my-3 p-4">
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-12">
+                            <input type="number" placeholder="CarID" name="Car ID" class="form-control my-3 p-4">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-12">
+                            <input type="text" placeholder="VIN" name="VIN" class="form-control my-3 p-4">
+                        </div>
+                    </div>
+                </div>
+                    <div class="form-row">
+                        <div class="col-lg-12">
+                            <input type="number" placeholder="Price" name="password" class="form-control my-3 p-4">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-12">
+                            <input type="text" placeholder="Type of lease: 1 - unlimited, 0 - limited" name="lease type" class="form-control my-3 p-4">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <a href="/Login">
+                            <button type="submit" class="btn1 mt-3 mb-5"> Submit </button>
+                        </a>
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+
+
+    </form>
+</div>
+
+<!--
 <div class="Background" >
 
     <div class="Container">
@@ -45,6 +130,10 @@
 
 
 </div>
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
 
 </body>
 </html>
