@@ -35,6 +35,11 @@ img{
     border: 1px solid;
     color: black;
 }
+ .btn2 mt-3 mb-5{
+     background: black;
+     border: 1px solid;
+     color: white;
+ }
 
 /*
 .Menu-box{
