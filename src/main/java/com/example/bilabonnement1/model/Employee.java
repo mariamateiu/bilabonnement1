@@ -2,17 +2,15 @@ package com.example.bilabonnement1.model;
 
 public class Employee {
     private int employeeID;
+    private String fullName;
     private String password;
     private String type;
-    private String fullName;
 
+    public Employee(){}
     public Employee(String fullName, String password, String type) {
         this.fullName = fullName;
         this.password = password;
         this.type = type;
-    }
-    public Employee(){
-
     }
 
     public Employee(int employeeID, String fullName, String password, String type) {

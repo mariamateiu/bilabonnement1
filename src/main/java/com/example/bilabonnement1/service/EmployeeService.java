@@ -19,11 +19,6 @@ if (employee!= null){
     }
 return succes;
 }
-    public ArrayList<Employee> getAllUsers(){
-        ArrayList<Employee> users = employeeRepository.getAllUsers();
-
-        return users;
-    }
 
 
 

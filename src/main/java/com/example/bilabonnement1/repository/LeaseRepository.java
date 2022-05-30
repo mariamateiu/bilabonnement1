@@ -16,11 +16,11 @@ public class LeaseRepository {
 
 
     ConnectionManager cm = new ConnectionManager();
+    Connection connection = cm.connectionToDB();
 
 
-    public void createLeje(Lease lease) throws SQLException {
+    public void createLease(Lease lease) throws SQLException {
 
-        Connection connection = cm.connectionToDB();
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "INSERT INTO semestereksamen.lease(leaseID, clientID, carID, VIN, price) VALUES (?,?,?,?,?)");
         preparedStatement.setInt(1, lease.getLeaseID());
@@ -35,7 +35,6 @@ public class LeaseRepository {
 
 
     public ArrayList<Lease> getAllLeases() {
-        Connection connection = cm.connectionToDB();
 
         ArrayList<Lease> leases = new ArrayList<>();
         String query = "SELECT * FROM lease";
@@ -61,24 +60,8 @@ public class LeaseRepository {
         return leases;
     }
 
-    public void deleteLease(int leaseID) {
-        Connection connection = cm.connectionToDB();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM semestereksamen.lease WHERE leaseID=?");
-            preparedStatement.setInt(1, leaseID);
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            System.out.println("fejl" + e);
-
-        }
-
-
-    }
-
     public Lease findLease(int leaseID) {
         Lease lease = null;
-        Connection connection = cm.connectionToDB();
         try {
             Statement statement = connection.createStatement();
             String sql = "SELECT * FROM semestereksamen.lease WHERE leaseID = '" + leaseID + "'";
@@ -94,5 +77,19 @@ public class LeaseRepository {
             System.out.println("Kunne ikke finde report" + e);
         }
         return lease;
+    }
+
+    public void deleteLease(int leaseID) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM semestereksamen.lease WHERE leaseID=?");
+            preparedStatement.setInt(1, leaseID);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("fejl" + e);
+
+        }
+
+
     }
 }
