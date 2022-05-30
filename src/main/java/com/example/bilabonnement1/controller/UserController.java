@@ -52,9 +52,6 @@ public class UserController {
     public String loginTjek(@RequestParam("navn") String name,
                             @RequestParam("password") String password) throws SQLException {
         Employee employee = employeeRepository.findUser(name);
-        if(employee == null){
-            return "FejlLogin";
-        }
         employees.add(0, employee);    // Bruges til at printe navn på medarbejeren på menu-siderne
         if (employeeService.loginSucces(employee, password)) {
             if (employee.getType().equalsIgnoreCase("forretning")) {
