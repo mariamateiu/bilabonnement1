@@ -18,7 +18,7 @@
 
 <div class="Form my-4 mx-5 " style="width: 100%; margin: auto">
 
-    <form class="container">
+    <div class="container">
         <div class="row no-gutters">
 
             <!--
@@ -32,40 +32,42 @@
                 <img src="https://images.unsplash.com/photo-1611448746128-7c39e03b71e4?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGRyaXZpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500" class="img-fluid" alt="...">
             </div>
 
-            <div class="col-lg-7 px-5 pt-5">
+            <form class="col-lg-7 px-5 pt-5" action="/OpretMedarbejder" method="post">
                 <h1 class="font-weight-bold py-3">Bilabonnement</h1>
                 <h4>Employee Registration</h4>
-                <form action="/OpretBruger" method="post">
+
                     <div class="form-row">
                         <div class="col-lg-12">
-                            <input type="text" placeholder="Employee full name" id="fullname" class="form-control my-3 p-4">
+                            <input type="text" placeholder="fullname" name="fullname" class="form-control my-3 p-4">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="col-lg-12">
-                            <input type="password" placeholder="Password" id="password" class="form-control my-3 p-4">
+                            <input type="password" placeholder="password" name="password" class="form-control my-3 p-4">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="col-lg-12">
-                            <input type="text" placeholder="Employee Type (data,damage,business)" id="typeemployee" class="form-control my-3 p-4">
+                            <input type="text" placeholder="type" name="type" class="form-control my-3 p-4">
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <button type="button" class="btn1 mt-3 mb-5"> Done </button>
-                    </div>
+                        <div class="col-lg-6">
+                            <a href="/OpretMedarbejder">
+                                <button type="submit" class="btn1 mt-3 mb-5"> Done </button>
+                            </a>
+                        </div>
 
-                </form>
-            </div>
+
+            </form>
 
 
         </div>
 
 
-    </form>
+    </div>
 </div>
 
 <!--
