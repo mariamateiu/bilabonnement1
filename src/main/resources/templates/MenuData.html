@@ -24,10 +24,11 @@
             </div>
 
             <div class="col-lg-7 px-5 pt-5">
-                <h1 class="font-weight-bold py-3"> Velkommen
+                <h1 class="font-weight-bold py-3"> Welcome
                     <td class="" th:text="${fullName}"></td>
                 </h1>
-                <form>
+
+                <form action="/RegistrerLease" method="get">
                     <div class="form-row">
                         <div class="col-lg-12">
                             <a href="/RegistrerLease">
@@ -35,6 +36,9 @@
                             </a>
                         </div>
                     </div>
+
+                </form>
+                <form action="/SletLease" method="get">
                     <div class="form-row">
                         <div class="col-lg-12">
                             <a href="/SletLease">
@@ -42,6 +46,8 @@
                             </a>
                         </div>
                     </div>
+                </form>
+                <form action="/viewAllLeaseRegistration" method="get">
                     <div class="form-row">
                         <div class="col-lg-12">
                             <a href="/viewAllLeaseRegistration">
@@ -50,6 +56,9 @@
                         </div>
 
                     </div>
+                </form>
+
+                <form action="/viewAllLeasedCar" method="get">
                     <div class="form-row">
                         <div class="col-lg-12">
                             <a href="/viewAllLeasedCar">
@@ -59,6 +68,17 @@
 
                     </div>
                 </form>
+                <form action="/FindLease">
+                    <div class="form-row">
+                        <div class="col-lg-12">
+                            <a href="/FindLease">
+                                <button class="btn1 mt-3 mb-5"> Overview of all leased cars </button>
+                            </a>
+                        </div>
+
+                    </div>
+                </form>
+
             </div>
 
 
