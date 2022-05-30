@@ -25,7 +25,7 @@
 </div> -->
 
 <div class="Form my-4 mx-5" style="width: 100%; margin: auto">
-    <form class="container" action="/CreateLease" method="post">
+    <div class="container">
 
         <div class="row no-gutters">
 
@@ -40,46 +40,45 @@
                 <!-- <img src="https://www.colorcombos.com/images/colors/F2F2F2.png" class="img-fluid" alt="..."> -->
             </div>
 
-            <div class="col-lg-7 px-5 pt-5">
+            <form class="col-lg-7 px-5 pt-5" action="/CreateLease" method="post">
                 <h1 class="font-weight-bold py-3">Bilabonnement</h1>
                 <h4>Registration of lease contract</h4>
 
                 <div class="form-row">
                     <div class="col-lg-12">
-                        <input type="number" placeholder="Client ID" name="Client ID" class="form-control my-3 p-4">
+                        <input type="number" placeholder="Client ID" name="client ID" class="form-control my-3 p-4">
                     </div>
                 </div>
-                <div class="form-row">
+
                     <div class="form-row">
                         <div class="col-lg-12">
                             <input type="number" placeholder="Car ID" name="Car ID" class="form-control my-3 p-4">
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="col-lg-12">
-                            <input type="text" placeholder="VIN" name="VIN" class="form-control my-3 p-4">
-                        </div>
-                    </div>
-                </div>
+
                 <div class="form-row">
                     <div class="col-lg-12">
                         <input type="number" placeholder="Price" name="Price" class="form-control my-3 p-4">
                     </div>
                 </div>
+
+                <!--
                 <div class="form-row">
                     <div class="col-lg-12">
                         <input type="text" placeholder="Type of lease: 1 - unlimited, 0 - limited" name="lease type"
                                class="form-control my-3 p-4">
                     </div>
                 </div>
-                <div class="form-row">
-
-                    <button type="submit" class="btn1 mt-3 mb-5"> Submit</button>
-
+-->
+                <div class="col-lg-6">
+                    <a href="/CreateLease">
+                        <button type="submit" class="btn1 mt-3 mb-5"> Done </button>
+                    </a>
                 </div>
-            </div>
+
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 
 

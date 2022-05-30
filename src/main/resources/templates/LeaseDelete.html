@@ -17,9 +17,7 @@
 
 <form class="Form my-4 mx-5" style="width: 100%; margin: auto;" >
 
-    <form class="container" action="/DeleteLease" method="post">
-
-
+    <form class="container" action="/SletLease" method="get">
 
         <div class="row no-gutters">
 
@@ -30,16 +28,22 @@
                 <h1 class="font-weight-bold py-3">Bilabonnement</h1>
                 <h1>Delete a lease contract</h1>
 
-                <div class="form-row">
-                    <div class="col-lg-12">
-                        <input type="text" placeholder="Lease ID" name="Lease ID" class="form-control my-3 p-4">
+                <form action="/DeleteLease">
+                    <div class="form-row">
+                        <div class="col-lg-12">
+                            <input type="text" placeholder="leaseID" name="leaseID" class="form-control my-3 p-4">
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-row">
-                    <button type="submit" class="btn1 mt-3 mb-5"> Delete </button>
+                    <div class="form-row">
+                        <a href="DeleteLease">
+                            <button type="submit" class="btn1 mt-3 mb-5"> Delete</button>
+                        </a>
 
-                </div>
+                    </div>
+                </form>
+
+
             </div>
         </div>
 
