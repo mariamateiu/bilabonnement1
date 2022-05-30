@@ -73,6 +73,9 @@ public class UserController {
 
     @GetMapping("/MenuData")
     public String menuData(Model model) {
+        if (employees.get(0) == null){
+            return "FejlLogin";
+        }
         Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
         model.addAttribute("fullName", em.getFullName());
         return "MenuData";
@@ -80,6 +83,9 @@ public class UserController {
 
     @GetMapping("/MenuDamage")
     public String menuDame(Model model) {
+        if (employees.get(0) == null){
+            return "FejlLogin";
+        }
         Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
         model.addAttribute("fullName", em.getFullName());
         return "MenuDamage";
@@ -87,6 +93,9 @@ public class UserController {
 
     @GetMapping("/MenuBusiness")
     public String menuBusiness(Model model) {
+        if (employees.get(0) == null){
+            return "FejlLogin";
+        }
         Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
         model.addAttribute("fullName", em.getFullName());
         return "MenuBusiness";
@@ -107,4 +116,12 @@ public class UserController {
         return "";
 
     }
+
+    @PostMapping("/Logud")
+    public String logud(){
+        employees.remove(0);      //Sletter den bruger der er logget ind, fra arraylisten
+        return "/Login";
+
+    }
+
 }
