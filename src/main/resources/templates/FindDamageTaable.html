@@ -44,6 +44,7 @@
                 <tr class="table-secondary">
 
                     <th scope="col"> DamageReportID</th>
+                    <th scope="col"> ClientID</th>
                     <th scope="col"> CarID</th>
                     <th scope="col"> CarPart</th>
                     <th scope="col"> DamageDescription</th>
@@ -59,6 +60,7 @@
                 <tr class="table-light" th:each="report : ${report}">
 
                     <td class="" th:text="${report.damageReportID}"></td>
+                    <td th:text="${report.clientID}"></td>
                     <td th:text="${report.carID}"></td>
                     <td th:text="${report.damageDescription}"></td>
                     <td th:text="${report.damagePrice}"></td>

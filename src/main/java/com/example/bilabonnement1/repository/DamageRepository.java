@@ -15,9 +15,10 @@ public class DamageRepository {
         Connection connection = cm.connectionToDB();
 
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO semestereksamen.damagereport(damagereportID, carID, car_part, damage_description, damage_price) VALUES (?,?,?,?,?)");
+                "INSERT INTO semestereksamen.damagereport(damagereportID, clientID, carID, car_part, damage_description, damage_price) VALUES (?,?,?,?,?,?)");
 
         preparedStatement.setInt(1,damageReport.getDamageReportID());
+        preparedStatement.setInt(1,damageReport.getClientID());
         preparedStatement.setInt(2,damageReport.getCarID());
         preparedStatement.setString(3,damageReport.getCarPart());
         preparedStatement.setString(4,damageReport.getDamageDescription());
@@ -38,12 +39,13 @@ public class DamageRepository {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int damagereportID = resultSet.getInt(1);
-                int carID = resultSet.getInt(2);
-                String carPart = resultSet.getString(3);
-                String damageDescription = resultSet.getString(4);
-                int damagePrice = resultSet.getInt(5);
+                int clientID = resultSet.getInt(2);
+                int carID = resultSet.getInt(3);
+                String carPart = resultSet.getString(4);
+                String damageDescription = resultSet.getString(5);
+                int damagePrice = resultSet.getInt(6);
 
-                reports.add(new DamageReport(damagereportID,carID,carPart,damageDescription,damagePrice));
+                reports.add(new DamageReport(damagereportID,clientID,carID,carPart,damageDescription,damagePrice));
 
 
             }
@@ -63,10 +65,11 @@ public class DamageRepository {
                 ResultSet resultSet = statement.executeQuery(sql);
                 while (resultSet.next()) {
                     int carID = resultSet.getInt("carID");
+                    int clientID = resultSet.getInt("clientID");
                     String carPart = resultSet.getString("car_part");
                     String damageDescription = resultSet.getString("damage_description");
                     int damagePrice = resultSet.getInt("damage_price");
-                    damageReport = new DamageReport(damageReportID,carID,carPart,damageDescription,damagePrice);
+                    damageReport = new DamageReport(damageReportID,clientID,carID,carPart,damageDescription,damagePrice);
                 }
             } catch (SQLException e) {
                 System.out.println("Kunne ikke finde report" + e);

@@ -64,6 +64,14 @@ public class DamageReport {
         this.damagePrice = damagePrice;
     }
 
+    public int getClientID() {
+        return clientID;
+    }
+
+    public void setClientID(int clientID) {
+        this.clientID = clientID;
+    }
+
     @Override
     public String toString() {
         return "DamageReport{" +
