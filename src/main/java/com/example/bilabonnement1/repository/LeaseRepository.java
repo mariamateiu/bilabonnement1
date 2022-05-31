@@ -22,12 +22,11 @@ public class LeaseRepository {
     public void createLease(Lease lease) throws SQLException {
 
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO semestereksamen.lease(leaseID, clientID, carID, VIN, price) VALUES (?,?,?,?,?)");
+                "INSERT INTO semestereksamen.lease(leaseID, clientID, carID, price) VALUES (?,?,?,?)");
         preparedStatement.setInt(1, lease.getLeaseID());
         preparedStatement.setInt(2, lease.getClientID());
         preparedStatement.setInt(3, lease.getCarID());
-        preparedStatement.setInt(4, lease.getVIN());
-        preparedStatement.setInt(5, lease.getPrice());
+        preparedStatement.setInt(4, lease.getPrice());
 
         preparedStatement.executeUpdate();
 
@@ -46,10 +45,9 @@ public class LeaseRepository {
                 int leaseID = resultSet.getInt(1);
                 int clientID = resultSet.getInt(2);
                 int carID = resultSet.getInt(3);
-                int VIN = resultSet.getInt(4);
-                int price = resultSet.getInt(5);
+                int price = resultSet.getInt(4);
 
-                leases.add(new Lease(leaseID, clientID, carID, VIN, price));
+                leases.add(new Lease(leaseID, clientID, carID, price));
 
 
             }
@@ -69,9 +67,8 @@ public class LeaseRepository {
             while (resultSet.next()) {
                 int clientID = resultSet.getInt("clientID");
                 int carID = resultSet.getInt("carID");
-                int VIN = resultSet.getInt("VIN");
                 int price = resultSet.getInt("price");
-                lease = new Lease(leaseID, carID, clientID,VIN, price);
+                lease = new Lease(leaseID, carID, clientID, price);
             }
         } catch (SQLException e) {
             System.out.println("Kunne ikke finde report" + e);
@@ -84,12 +81,11 @@ public class LeaseRepository {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM semestereksamen.lease WHERE leaseID=?");
             preparedStatement.setInt(1, leaseID);
             preparedStatement.executeUpdate();
+            System.out.println("hej");
 
         } catch (SQLException e) {
             System.out.println("fejl" + e);
 
         }
-
-
     }
 }

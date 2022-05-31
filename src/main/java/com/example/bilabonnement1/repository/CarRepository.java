@@ -128,6 +128,19 @@ public class CarRepository {
         return car;
 
     }
+
+    public void carLeased(int carID, int carAvailable) {
+        try {
+            String sql = "UPDATE car SET car_available = ? WHERE carID = '" + carID + "'";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1,carAvailable);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Der skete en fejl" + e);
+        }
+    }
+
+
 }
 
 

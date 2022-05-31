@@ -24,7 +24,7 @@
 
     <nav class="navbar ">
         <div>
-            <form action="/Tilbage" method="post">
+            <form action="/Back" method="post">
                 <button style="float: bottom" class="btn btn-outline-dark">Back</button>
             </form>
         </div>
@@ -60,7 +60,7 @@
                 <tr class="table-light" th:each="reports : ${reports}">
 
                     <th scope="row" th:text="${reports.damageReportID}"></th>
-                    <td th:text="${report.clientID}"></td>
+                    <td th:text="${reports.clientID}"></td>
                     <td th:text="${reports.carID}"></td>
                     <td th:text="${reports.carPart}"></td>
                     <td th:text="${reports.damageDescription}"></td>

@@ -17,11 +17,11 @@ public class DamageRepository {
                 "INSERT INTO semestereksamen.damagereport(damagereportID, clientID, carID, car_part, damage_description, damage_price) VALUES (?,?,?,?,?,?)");
 
         preparedStatement.setInt(1,damageReport.getDamageReportID());
-        preparedStatement.setInt(1,damageReport.getClientID());
-        preparedStatement.setInt(2,damageReport.getCarID());
-        preparedStatement.setString(3,damageReport.getCarPart());
-        preparedStatement.setString(4,damageReport.getDamageDescription());
-        preparedStatement.setInt(5,damageReport.getDamagePrice());
+        preparedStatement.setInt(2,damageReport.getClientID());
+        preparedStatement.setInt(3,damageReport.getCarID());
+        preparedStatement.setString(4,damageReport.getCarPart());
+        preparedStatement.setString(5,damageReport.getDamageDescription());
+        preparedStatement.setInt(6,damageReport.getDamagePrice());
 
         preparedStatement.executeUpdate();
 
@@ -75,6 +75,7 @@ public class DamageRepository {
         }
 
     public void deleteReport(int damageReportID) {
+
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM semestereksamen.damagereport WHERE damagereportID=?");
             preparedStatement.setInt(1, damageReportID);
