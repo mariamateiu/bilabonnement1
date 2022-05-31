@@ -71,7 +71,7 @@ public class DamageLeaseController {
     public String deleteLease(@RequestParam("leaseID") int leaseID) {
         Lease lease = leaseRepository.findLease(leaseID);
 
-        //carRepository.carLeased(lease.getCarID(), 0);    //Sætter bilen til at være ledig igen, efter leasen er slettet
+        carRepository.carLeased(lease.getCarID(), 0);    //Sætter bilen til at være ledig igen, efter leasen er slettet
         leaseRepository.deleteLease(leaseID);
         System.out.println(leaseID);
         return "redirect:/viewAllLeaseRegistration";
@@ -93,7 +93,7 @@ public class DamageLeaseController {
             damageRepository.createDamageReport(dr);
             return "redirect:/allDamageReports";
         } else {
-            return "Eroor";
+            return "Error";
         }
 
     }
