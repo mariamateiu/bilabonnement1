@@ -112,7 +112,7 @@ public class UserController {
     @PostMapping("/Logout")
     public String logOut(){
         employees.remove(0);      //Sletter den bruger der er logget ind, fra arraylisten
-        return "/Login";
+        return "redirect:/Login";
 
     }
 
