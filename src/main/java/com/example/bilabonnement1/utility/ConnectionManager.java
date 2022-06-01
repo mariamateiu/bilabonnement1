@@ -9,9 +9,9 @@ public class ConnectionManager {
     public static Connection connectionToDB () {
 
 
-        String url = "jdbc:mysql://localhost:3306/semestereksamen";
-        String user = "root";
-        String password = "ngv38Bdt";
+        String url = "jdbc:mysql://bcfade98494c81:c4349e89@eu-cdbr-west-02.cleardb.net/heroku_26b638a260d4157?reconnect=true";
+        String user = "bcfade98494c81";
+        String password = "c4349e89";
 
         try {
             connection = DriverManager.getConnection(url, user, password);

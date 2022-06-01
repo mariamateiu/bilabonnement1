@@ -14,7 +14,7 @@ public class DamageRepository {
 
     public void createDamageReport( DamageReport damageReport) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO semestereksamen.damagereport(damagereportID, clientID, carID, car_part, damage_description, damage_price) VALUES (?,?,?,?,?,?)");
+                "INSERT INTO damagereport(damagereportID, clientID, carID, car_part, damage_description, damage_price) VALUES (?,?,?,?,?,?)");
 
         preparedStatement.setInt(1,damageReport.getDamageReportID());
         preparedStatement.setInt(2,damageReport.getClientID());

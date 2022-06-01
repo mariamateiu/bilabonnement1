@@ -22,7 +22,7 @@ public class LeaseRepository {
     public void createLease(Lease lease) throws SQLException {
 
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO semestereksamen.lease(leaseID, clientID, carID, price) VALUES (?,?,?,?)");
+                "INSERT INTO lease(leaseID, clientID, carID, price) VALUES (?,?,?,?)");
         preparedStatement.setInt(1, lease.getLeaseID());
         preparedStatement.setInt(2, lease.getClientID());
         preparedStatement.setInt(3, lease.getCarID());
@@ -62,7 +62,7 @@ public class LeaseRepository {
         Lease lease = null;
         try {
             Statement statement = connection.createStatement();
-            String sql = "SELECT * FROM semestereksamen.lease WHERE leaseID = '" + leaseID + "'";
+            String sql = "SELECT * FROM lease WHERE leaseID = '" + leaseID + "'";
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 int clientID = resultSet.getInt("clientID");
@@ -78,7 +78,7 @@ public class LeaseRepository {
 
     public void deleteLease(int leaseID) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM semestereksamen.lease WHERE leaseID=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM lease WHERE leaseID=?");
             preparedStatement.setInt(1, leaseID);
             preparedStatement.executeUpdate();
             System.out.println("hej");

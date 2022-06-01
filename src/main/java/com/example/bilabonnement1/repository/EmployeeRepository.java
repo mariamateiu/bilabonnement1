@@ -16,7 +16,7 @@ public class EmployeeRepository {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO semestereksamen.employee(full_name, password, type) VALUES (?,?,?)");
+                    "INSERT INTO employee(full_name, password, type) VALUES (?,?,?)");
             preparedStatement.setString(1, user.getFullName());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getType());
@@ -30,7 +30,7 @@ public class EmployeeRepository {
         Employee employee = null;
         try {
             Statement statement = connection.createStatement();
-            String sql = "SELECT * FROM semestereksamen.employee WHERE full_name = '" + fullName + "'";
+            String sql = "SELECT * FROM employee WHERE full_name = '" + fullName + "'";
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 String password = resultSet.getString("password");
@@ -47,7 +47,7 @@ public class EmployeeRepository {
         Connection connection = cm.connectionToDB();
 
         ArrayList<Employee> users = new ArrayList<>();
-        String query  = "SELECT * FROM semestereksamen.employee";
+        String query  = "SELECT * FROM employee";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);

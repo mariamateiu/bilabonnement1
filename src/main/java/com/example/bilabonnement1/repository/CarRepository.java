@@ -108,7 +108,7 @@ public class CarRepository {
         Car car = null;
         try {
             Statement statement = connection.createStatement();
-            String sql = "SELECT * FROM semestereksamen.car WHERE carID = '" + carID + "'";
+            String sql = "SELECT * FROM car WHERE carID = '" + carID + "'";
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 String car_brand = resultSet.getString("car_brand");
