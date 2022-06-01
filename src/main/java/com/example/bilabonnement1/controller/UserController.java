@@ -58,13 +58,13 @@ public class UserController {
         employees.add(0, employee);    // Bruges til at printe navn på medarbejeren på menu-siderne
         if (employeeService.loginSucces(employee, password)) {
             if (employee.getType().equalsIgnoreCase("business")) {
-                return "redirect:/MenuBusiness";
+                return "redirect:MenuBusiness";
             }
             if (employee.getType().equalsIgnoreCase("data")) {
-                return "redirect:/MenuData";
+                return "redirect:MenuData";
             }
             if (employee.getType().equalsIgnoreCase("damage")) {
-                return "redirect:/MenuDamage";
+                return "redirect:MenuDamage";
             }
             if (!employeeService.loginSucces(employee, password)) {
                 return "FejlLogin";
