@@ -40,7 +40,7 @@ public class DamageLeaseController {
             if (carRepository.findCar(carID).getAvailable() == 0) {
                 carRepository.carLeased(carID, 1);   //Sætter bilen til, ikke at være til rådighed
                 leaseRepository.createLease(l);
-                return "redirect:/viewAllLeaseRegistration";
+                return "redirect:viewAllLeaseRegistration";
             }
         }
         return "Error";
@@ -74,7 +74,7 @@ public class DamageLeaseController {
         carRepository.carLeased(lease.getCarID(), 0);    //Sætter bilen til at være ledig igen, efter leasen er slettet
         leaseRepository.deleteLease(leaseID);
         System.out.println(leaseID);
-        return "redirect:/viewAllLeaseRegistration";
+        return "redirect:viewAllLeaseRegistration";
     }
 
     @GetMapping("/CreateDamageReport")
@@ -91,7 +91,7 @@ public class DamageLeaseController {
         if (carService.carFound(carID)) {              // Tjekker om det indtastede carID matcher med en bil i databasen
             DamageReport dr = new DamageReport(clientID, carID, carPart, carDamage, price);
             damageRepository.createDamageReport(dr);
-            return "redirect:/allDamageReports";
+            return "redirect:allDamageReports";
         } else {
             return "Error";
         }
@@ -122,7 +122,7 @@ public class DamageLeaseController {
     public String deleteDamageReport(@RequestParam("reportID") int damageReportID) {
         damageRepository.deleteReport(damageReportID);
         System.out.println(damageReportID);
-        return "redirect:/allDamageReports";
+        return "redirect:allDamageReports";
     }
 
     @GetMapping("/test")

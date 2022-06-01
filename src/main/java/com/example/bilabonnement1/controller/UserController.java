@@ -39,7 +39,7 @@ public class UserController {
             em.setPassword(password);
             em.setType(type);
             employeeRepository.createUser(em);
-            return "redirect:/Login";
+            return "redirect:Login";
         } else {
             return "/FejlOprettelse";
         }
@@ -100,13 +100,13 @@ public class UserController {
     public String goBack() {
         Employee em = employees.get(0);      // Finder den bruger, der er logget ind på log-in siden
         if (em.getType().equalsIgnoreCase("business")) {
-            return "redirect:/MenuBusiness";
+            return "redirect:MenuBusiness";
         }
         if (em.getType().equalsIgnoreCase("data")) {
-            return "redirect:/MenuData";
+            return "redirect:MenuData";
         }
         if (em.getType().equalsIgnoreCase("damage")) {
-            return "redirect:/MenuDamage";
+            return "redirect:MenuDamage";
         }
         return "";
 
@@ -115,7 +115,7 @@ public class UserController {
     @PostMapping("/Logout")
     public String logOut(){
         employees.remove(0);      //Sletter den bruger der er logget ind, fra arraylisten
-        return "redirect:/Login";
+        return "redirect:Login";
 
     }
 
