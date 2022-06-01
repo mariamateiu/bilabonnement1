@@ -8,18 +8,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmployeeService {
-EmployeeRepository employeeRepository = new EmployeeRepository();
+    EmployeeRepository employeeRepository = new EmployeeRepository();
 
-public Boolean loginSucces(Employee employee,String password) throws SQLException {
-    Boolean succes = false;
-employee = employeeRepository.findUser(employee.getFullName());
-if (employee!= null){
-    if(employee.getPassword().equalsIgnoreCase(password))
-        succes = true;
+    public Boolean loginSucces(Employee employee, String password) throws SQLException {
+        Boolean succes = false;
+        employee = employeeRepository.findUser(employee.getFullName());
+        if (employee != null) {
+            if (employee.getPassword().equalsIgnoreCase(password))
+                succes = true;
+        }
+        return succes;
     }
-return succes;
-}
-
 
 
 }
