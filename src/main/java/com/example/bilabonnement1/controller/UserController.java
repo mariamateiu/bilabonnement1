@@ -21,6 +21,11 @@ public class UserController {
 
     //test push
 
+    @GetMapping("/")
+    public String index(){
+
+        return "Login";
+    }
 
     @GetMapping("/CreateUser")
     public String createEmployeeUser() {
