@@ -43,6 +43,7 @@ public class UserController {
         } else {
             return "/FejlOprettelse";
         }
+
     }
 
     @GetMapping("/Login")
