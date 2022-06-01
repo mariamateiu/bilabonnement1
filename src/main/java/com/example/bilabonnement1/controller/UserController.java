@@ -23,7 +23,6 @@ public class UserController {
 
     @GetMapping("/")
     public String index(){
-
         return "Login";
     }
 
@@ -44,9 +43,9 @@ public class UserController {
             em.setPassword(password);
             em.setType(type);
             employeeRepository.createUser(em);
-            return "redirect:Login";
+            return "Login";
         } else {
-            return "/FejlOprettelse";
+            return "FejlOprettelse";
         }
 
     }
