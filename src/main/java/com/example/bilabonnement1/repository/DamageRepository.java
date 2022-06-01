@@ -14,7 +14,7 @@ public class DamageRepository {
 
     public void createDamageReport( DamageReport damageReport) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO damagereport(damagereportID, clientID, carID, car_part, damage_description, damage_price) VALUES (?,?,?,?,?,?)");
+                "INSERT INTO heroku_26b638a260d4157.damagereport(damagereportID, clientID, carID, car_part, damage_description, damage_price) VALUES (?,?,?,?,?,?)");
 
         preparedStatement.setInt(1,damageReport.getDamageReportID());
         preparedStatement.setInt(2,damageReport.getClientID());
@@ -30,7 +30,7 @@ public class DamageRepository {
     public ArrayList<DamageReport> getAllReports() {
 
         ArrayList<DamageReport> reports = new ArrayList<>();
-        String query = "SELECT * FROM damagereport";
+        String query = "SELECT * FROM heroku_26b638a260d4157.damagereport";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -58,7 +58,7 @@ public class DamageRepository {
             DamageReport damageReport = null;
             try {
                 Statement statement = connection.createStatement();
-                String sql = "SELECT * FROM semestereksamen.damagereport WHERE damagereportID = '" + damageReportID + "'";
+                String sql = "SELECT * FROM heroku_26b638a260d4157.damagereport WHERE damagereportID = '" + damageReportID + "'";
                 ResultSet resultSet = statement.executeQuery(sql);
                 while (resultSet.next()) {
                     int carID = resultSet.getInt("carID");
@@ -77,7 +77,7 @@ public class DamageRepository {
     public void deleteReport(int damageReportID) {
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM semestereksamen.damagereport WHERE damagereportID=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM heroku_26b638a260d4157.damagereport WHERE damagereportID=?");
             preparedStatement.setInt(1, damageReportID);
             preparedStatement.executeUpdate();
 

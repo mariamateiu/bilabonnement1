@@ -21,7 +21,7 @@ public class LeaseRepository {
 
     public void createLease(Lease lease) throws SQLException {
 
-        PreparedStatement preparedStatement = connection.prepareStatement(
+   PreparedStatement preparedStatement = connection.prepareStatement(
                 "INSERT INTO lease(leaseID, clientID, carID, price) VALUES (?,?,?,?)");
         preparedStatement.setInt(1, lease.getLeaseID());
         preparedStatement.setInt(2, lease.getClientID());

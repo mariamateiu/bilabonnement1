@@ -18,7 +18,7 @@ public class CarRepository {
     public ArrayList<Car> allLeasedCar() {
 
         ArrayList<Car> cars = new ArrayList<>();
-        String query = "SELECT * FROM car";
+        String query = "SELECT * FROM heroku_26b638a260d4157.car";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -47,7 +47,7 @@ public class CarRepository {
 
     public ArrayList<Car> allLeasedCarAvailable() {
         ArrayList<Car> cars = new ArrayList<>();
-        String query = "SELECT * FROM car where car_available = 1";
+        String query = "SELECT * FROM heroku_26b638a260d4157.car where car_available = 1";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -77,7 +77,7 @@ public class CarRepository {
 
     public ArrayList<Car> allLeasedCarNotAvailable() {
         ArrayList<Car> cars = new ArrayList<>();
-        String query = "SELECT * FROM car where car_available = 0";
+        String query = "SELECT * FROM heroku_26b638a260d4157.car where car_available = 0";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -108,7 +108,7 @@ public class CarRepository {
         Car car = null;
         try {
             Statement statement = connection.createStatement();
-            String sql = "SELECT * FROM car WHERE carID = '" + carID + "'";
+            String sql = "SELECT * FROM heroku_26b638a260d4157.car WHERE carID = '" + carID + "'";
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 String car_brand = resultSet.getString("car_brand");
@@ -131,7 +131,7 @@ public class CarRepository {
 
     public void carLeased(int carID, int carAvailable) {
         try {
-            String sql = "UPDATE car SET car_available = ? WHERE carID = '" + carID + "'";
+            String sql = "UPDATE heroku_26b638a260d4157.car SET car_available = ? WHERE carID = '" + carID + "'";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setInt(1,carAvailable);
             preparedStatement.executeUpdate();
