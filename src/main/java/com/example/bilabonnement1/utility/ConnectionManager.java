@@ -9,7 +9,7 @@ public class ConnectionManager {
     public static Connection connectionToDB () {
 
 
-        String url = "jdbc:mysql://bcfade98494c81:c4349e89@eu-cdbr-west-02.cleardb.net/heroku_26b638a260d4157?reconnect=true";
+        String url = "jdbc:mysql://@eu-cdbr-west-02.cleardb.net/heroku_26b638a260d4157?reconnect=true";
         String user = "bcfade98494c81";
         String password = "c4349e89";
 
