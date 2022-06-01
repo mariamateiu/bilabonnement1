@@ -1,5 +1,7 @@
 package com.example.bilabonnement1.model;
 
+//Lavet af Nanna
+
 public class Employee {
     private int employeeID;
     private String fullName;

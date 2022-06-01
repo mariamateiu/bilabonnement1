@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLException;
 
+//Primært lavet af Nanna
+
 @Controller
 public class DamageLeaseController {
     LeaseRepository leaseRepository = new LeaseRepository();

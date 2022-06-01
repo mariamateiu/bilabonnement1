@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+//Lavet af Maria
+
 @Service
 public class LeaseService {
     @Autowired

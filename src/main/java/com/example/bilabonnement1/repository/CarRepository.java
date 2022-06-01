@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 
+//Lavet af Naomi
+
 @Repository
 public class CarRepository {
     ConnectionManager cm = new ConnectionManager();

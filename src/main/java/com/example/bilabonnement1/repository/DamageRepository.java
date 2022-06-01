@@ -6,6 +6,8 @@ import com.example.bilabonnement1.utility.ConnectionManager;
 import java.sql.*;
 import java.util.ArrayList;
 
+//Lavet af Nanna
+
 public class DamageRepository {
 
     ConnectionManager cm = new ConnectionManager();

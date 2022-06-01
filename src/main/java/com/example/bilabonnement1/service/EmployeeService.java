@@ -7,6 +7,8 @@ import com.example.bilabonnement1.repository.EmployeeRepository;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+//Lavet af Nanna
+
 public class EmployeeService {
     EmployeeRepository employeeRepository = new EmployeeRepository();
 

@@ -23,6 +23,8 @@ public class DataController {
     CarService carService = new CarService();
     DamageService damageService = new DamageService();
 
+    //Primært lavet af Naomi
+
     @GetMapping("/viewAllLeaseRegistration")
     public String viewAllLeaseRegistration(Model model) {
 
@@ -34,7 +36,7 @@ public class DataController {
         model.addAttribute("totalAmount", leases.size());
 
 
-        return "/LeaseTable";
+        return "LeaseTable";
 
     }
 
@@ -49,7 +51,7 @@ public class DataController {
         model.addAttribute("cars", allLeasedCars);
 
 
-        return "/CarTable";
+        return "CarTable";
 
     }
 
@@ -62,7 +64,7 @@ public class DataController {
 
         System.out.println(cars);
         model.addAttribute("cars", cars);
-        return "/CarAvailable";
+        return "CarAvailable";
 
     }
 
@@ -76,7 +78,7 @@ public class DataController {
         model.addAttribute("cars", cars);
 
 
-        return "/CarNotAvailable";
+        return "CarNotAvailable";
 
     }
 

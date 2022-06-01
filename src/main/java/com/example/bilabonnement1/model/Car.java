@@ -1,5 +1,7 @@
 package com.example.bilabonnement1.model;
 
+//Lavet af Maria
+
 public class Car {
     private int carID;
     private String brand;

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+//Lavet af Naomi
 public class ConnectionManager {
     private static Connection connection;
     public static Connection connectionToDB () {

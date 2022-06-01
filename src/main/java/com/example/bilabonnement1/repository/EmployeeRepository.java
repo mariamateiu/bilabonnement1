@@ -7,6 +7,7 @@ import com.example.bilabonnement1.utility.ConnectionManager;
 import java.sql.*;
 import java.util.ArrayList;
 
+//Lavet af Maria
 public class EmployeeRepository {
     ConnectionManager cm = new ConnectionManager();
     Connection connection = cm.connectionToDB();

@@ -1,4 +1,5 @@
 package com.example.bilabonnement1.model;
+//Lavet af Maria
 
 public class DamageReport {
     private int damageReportID;

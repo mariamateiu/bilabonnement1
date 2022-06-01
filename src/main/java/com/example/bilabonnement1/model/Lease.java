@@ -1,5 +1,7 @@
 package com.example.bilabonnement1.model;
 
+//Lavet af Naomi
+
 public class Lease {
     private int leaseID;
     private int clientID;

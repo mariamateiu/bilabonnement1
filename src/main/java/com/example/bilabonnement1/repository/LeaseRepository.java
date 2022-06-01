@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+//Lavet af Maria
+
 @Repository
 public class LeaseRepository {
 

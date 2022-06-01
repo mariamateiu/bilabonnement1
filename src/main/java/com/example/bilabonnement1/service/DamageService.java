@@ -6,6 +6,8 @@ import com.example.bilabonnement1.repository.DamageRepository;
 
 import java.util.ArrayList;
 
+//Lavet af Naomi
+
 public class DamageService {
     DamageRepository damageRepository = new DamageRepository();
 
