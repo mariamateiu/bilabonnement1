@@ -43,7 +43,7 @@ public class UserController {
             em.setPassword(password);
             em.setType(type);
             employeeRepository.createUser(em);
-            return "redirect:/Login";
+            return "redirect:Login";
         } else {
             return "FejlOprettelse";
         }
