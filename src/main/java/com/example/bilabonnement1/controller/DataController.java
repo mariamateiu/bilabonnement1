@@ -11,6 +11,7 @@ import com.example.bilabonnement1.service.CarService;
 import com.example.bilabonnement1.service.DamageService;
 import com.example.bilabonnement1.service.EmployeeService;
 import com.example.bilabonnement1.service.LeaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,10 +20,16 @@ import java.util.ArrayList;
 
 @Controller
 public class DataController {
-    LeaseService leaseService = new LeaseService();
-    CarService carService = new CarService();
-    DamageService damageService = new DamageService();
+    CarService carService;
+    DamageService damageService;
+    LeaseService leaseService;
 
+    @Autowired
+    public DataController(CarService carService, DamageService damageService, LeaseService leaseService){
+        this.carService = carService;
+        this.damageService = damageService;
+        this.leaseService = leaseService;
+    }
     //Primært lavet af Naomi
 
     @GetMapping("/viewAllLeaseRegistration")

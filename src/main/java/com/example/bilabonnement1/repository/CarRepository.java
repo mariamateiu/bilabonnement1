@@ -4,6 +4,7 @@ import com.example.bilabonnement1.model.Car;
 import com.example.bilabonnement1.model.Employee;
 import com.example.bilabonnement1.model.Lease;
 import com.example.bilabonnement1.utility.ConnectionManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -13,9 +14,10 @@ import java.util.ArrayList;
 
 @Repository
 public class CarRepository {
-    ConnectionManager cm = new ConnectionManager();
-    Connection connection = cm.connectionToDB();
-
+    Connection connection;
+    public CarRepository(){
+        connection = ConnectionManager.connectionToDB();
+    }
 
     public ArrayList<Car> allLeasedCar() {
 

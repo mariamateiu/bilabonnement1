@@ -2,31 +2,20 @@ package com.example.bilabonnement1.repository;
 
 import com.example.bilabonnement1.model.DamageReport;
 import com.example.bilabonnement1.utility.ConnectionManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 //Lavet af Nanna
+@Repository
 
 public class DamageRepository {
 
-    ConnectionManager cm = new ConnectionManager();
-    Connection connection = cm.connectionToDB();
-
-
-    public void createDamageReport( DamageReport damageReport) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO heroku_26b638a260d4157.damagereport(damagereportID, clientID, carID, car_part, damage_description, damage_price) VALUES (?,?,?,?,?,?)");
-
-        preparedStatement.setInt(1,damageReport.getDamageReportID());
-        preparedStatement.setInt(2,damageReport.getClientID());
-        preparedStatement.setInt(3,damageReport.getCarID());
-        preparedStatement.setString(4,damageReport.getCarPart());
-        preparedStatement.setString(5,damageReport.getDamageDescription());
-        preparedStatement.setInt(6,damageReport.getDamagePrice());
-
-        preparedStatement.executeUpdate();
-
+    Connection connection;
+    public DamageRepository(){
+        connection = ConnectionManager.connectionToDB();
     }
 
     public ArrayList<DamageReport> getAllReports() {
@@ -55,6 +44,22 @@ public class DamageRepository {
         }
         return reports;
     }
+    public void createDamageReport( DamageReport damageReport) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO heroku_26b638a260d4157.damagereport(damagereportID, clientID, carID, car_part, damage_description, damage_price) VALUES (?,?,?,?,?,?)");
+
+        preparedStatement.setInt(1,damageReport.getDamageReportID());
+        preparedStatement.setInt(2,damageReport.getClientID());
+        preparedStatement.setInt(3,damageReport.getCarID());
+        preparedStatement.setString(4,damageReport.getCarPart());
+        preparedStatement.setString(5,damageReport.getDamageDescription());
+        preparedStatement.setInt(6,damageReport.getDamagePrice());
+
+        preparedStatement.executeUpdate();
+
+    }
+
+
 
     public DamageReport findReport(int damageReportID){
             DamageReport damageReport = null;

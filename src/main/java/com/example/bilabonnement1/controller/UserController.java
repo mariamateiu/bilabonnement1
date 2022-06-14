@@ -2,7 +2,11 @@ package com.example.bilabonnement1.controller;
 
 import com.example.bilabonnement1.model.Employee;
 import com.example.bilabonnement1.repository.EmployeeRepository;
+import com.example.bilabonnement1.service.CarService;
+import com.example.bilabonnement1.service.DamageService;
 import com.example.bilabonnement1.service.EmployeeService;
+import com.example.bilabonnement1.service.LeaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +19,18 @@ import java.util.ArrayList;
 @Controller
 public class UserController {
     ArrayList<Employee> employees = new ArrayList<>();
+    CarService carService;
+    DamageService damageService;
+    LeaseService leaseService;
+    EmployeeService employeeService;
 
-    EmployeeRepository employeeRepository = new EmployeeRepository();
-    EmployeeService employeeService = new EmployeeService();
-
+    @Autowired
+    public UserController(CarService carService, DamageService damageService, LeaseService leaseService, EmployeeService employeeService){
+        this.carService = carService;
+        this.damageService = damageService;
+        this.leaseService = leaseService;
+        this.employeeService = employeeService;
+    }
     //Primært lavet af Nanna
 
     @GetMapping("/")
@@ -42,7 +54,7 @@ public class UserController {
             em.setFullName(fullName);
             em.setPassword(password);
             em.setType(type);
-            employeeRepository.createUser(em);
+            employeeService.createUser(em);
             return "redirect:Login";
         } else {
             return "FejlOprettelse";
@@ -58,7 +70,7 @@ public class UserController {
     @PostMapping("/Login")
     public String login(@RequestParam("navn") String name,
                         @RequestParam("password") String password) throws SQLException {
-        Employee employee = employeeRepository.findUser(name);
+        Employee employee = employeeService.findUser(name);
         employees.add(0, employee);    // Bruges til at printe navn på medarbejeren på menu-siderne
         if (employeeService.loginSucces(employee, password)) {
             if (employee.getType().equalsIgnoreCase("business")) {

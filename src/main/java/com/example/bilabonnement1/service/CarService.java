@@ -13,11 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 //Lavet af Naomi
-
 @Service
 public class CarService {
+    CarRepository carRepository;
+
     @Autowired
-    CarRepository carRepository = new CarRepository();
+    public CarService(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
 
     // vi bruger vores service lag som vores sikkerhedslag
     public ArrayList<Car> allLeasedCar() {
@@ -38,13 +41,21 @@ public class CarService {
         return cars;
     }
 
+    public Car findCar(int carID) {
+        return carRepository.findCar(carID);
+    }
+
     public Boolean carFound(int carID) throws SQLException {
         Boolean succes = false;
         Car car = carRepository.findCar(carID);
-        if (car!= null) {
+        if (car != null) {
             succes = true;
         }
         return succes;
+    }
+
+    public void carLeased(int carID, int carAvailable) {
+        carRepository.carLeased(carID, carAvailable);
     }
 
 
