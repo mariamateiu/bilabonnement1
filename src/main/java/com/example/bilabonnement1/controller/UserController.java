@@ -119,7 +119,7 @@ public class UserController {
 
     }
 
-    @PostMapping("/Logout")
+    @GetMapping("/Logout")
     public String logOut(){
         employee = null;
         return "redirect:Login";
