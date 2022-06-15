@@ -14,10 +14,8 @@ import java.util.ArrayList;
 
 @Repository
 public class CarRepository {
-    Connection connection;
-    public CarRepository(){
-        connection = ConnectionManager.connectionToDB();
-    }
+    Connection connection= ConnectionManager.connectionToDB();
+
 
     public ArrayList<Car> allLeasedCar() {
 

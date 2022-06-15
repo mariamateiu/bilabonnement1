@@ -13,10 +13,8 @@ import java.util.ArrayList;
 
 public class DamageRepository {
 
-    Connection connection;
-    public DamageRepository(){
-        connection = ConnectionManager.connectionToDB();
-    }
+    Connection connection = ConnectionManager.connectionToDB();
+
 
     public ArrayList<DamageReport> getAllReports() {
 

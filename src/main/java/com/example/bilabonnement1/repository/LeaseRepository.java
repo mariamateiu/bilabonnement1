@@ -17,10 +17,8 @@ import java.util.List;
 @Repository
 public class LeaseRepository {
 
-    Connection connection;
-    public LeaseRepository(){
-        connection = ConnectionManager.connectionToDB();
-    }
+    Connection connection = ConnectionManager.connectionToDB();
+
 
     public void createLease(Lease lease) throws SQLException {
 

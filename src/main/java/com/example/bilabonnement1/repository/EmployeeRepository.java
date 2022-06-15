@@ -12,10 +12,8 @@ import java.util.ArrayList;
 
 //Lavet af Maria
 public class EmployeeRepository {
-    Connection connection;
-    public EmployeeRepository(){
-        connection = ConnectionManager.connectionToDB();
-    }
+    Connection connection = ConnectionManager.connectionToDB();
+
 
 
     public ArrayList<Employee> getAllUsers() {
