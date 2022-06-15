@@ -22,7 +22,7 @@ public class UserController {
     DamageService damageService;
     LeaseService leaseService;
     EmployeeService employeeService;
-    Employee employee;
+    Employee employee = new Employee();
 
     @Autowired
     public UserController(CarService carService, DamageService damageService, LeaseService leaseService, EmployeeService employeeService){
