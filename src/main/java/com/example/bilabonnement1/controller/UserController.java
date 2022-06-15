@@ -69,7 +69,7 @@ public class UserController {
     @PostMapping("/Login")
     public String login(@RequestParam("navn") String name,
                         @RequestParam("password") String password) throws SQLException {
-        Employee employee = employeeService.findUser(name);
+        employee = employeeService.findUser(name);
         if (employeeService.loginSucces(employee, password)) {
             if (employee.getType().equalsIgnoreCase("business")) {
                 return "redirect:MenuBusiness";
