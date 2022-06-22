@@ -14,8 +14,6 @@ import java.util.ArrayList;
 public class EmployeeRepository {
     Connection connection = ConnectionManager.connectionToDB();
 
-
-
     public ArrayList<Employee> getAllUsers() {
 
         ArrayList<Employee> users = new ArrayList<>();
